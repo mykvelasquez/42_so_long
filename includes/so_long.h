@@ -22,6 +22,14 @@
 # include <stdio.h>
 # include <unistd.h>
 
+typedef struct s_list {
+    int         fd;
+    int         x;
+    int         y;
+    char        *map;
+    char        *map_arr;
+}               l_list;
+
 int		map_validation(char **map_arr);
 int		map_check_rectangle(char **map_arr);
 int		main(int argc, char **argv);

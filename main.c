@@ -14,10 +14,10 @@
 
 void init_so_long(l_list *sl)
 {
-	ls->x = 0;
-	ls->y = 0;
-	ls->map = NULL;
-	ls->map_arr = NULL;
+	sl->x = 0;
+	sl->y = 0;
+	sl->map = NULL;
+	sl->map_arr = NULL;
 }
 
 void	free_so_long(l_list *sl)
