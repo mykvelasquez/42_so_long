@@ -1,33 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   helper_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/18 11:47:02 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/20 12:23:56 by mvelasqu         ###   ########.fr       */
+/*   Created: 2026/03/20 11:46:42 by mvelasqu          #+#    #+#             */
+/*   Updated: 2026/03/20 11:47:06 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		main(int argc, char **argv)
+void	free_so_long(l_list *sl)
 {
-	l_list sl;
-	u_list un;
+	if (sl->map != NULL)
+	{
+		free(sl->map);
+		sl->map = NULL;
+	}
+	if (sl->map_arr != NULL)
+	{
+		ft_free_split(sl->map_arr);
+		sl->map_arr = NULL;
+	}
+	if (sl->map_dup != NULL)
+	{
+		ft_free_split(sl->map_dup);
+		sl->map_dup = NULL;
+	}
+}
 
-	// number of arguments check
-	if (argc != 2)
-		return (ft_putendl_fd("Usage: ./so_long <map.ber>", 2), 1);
-	// create map data in **arr
-	create_map(&sl, un, argv);
-	// print map
-	print_map(sl.map_arr);
-	ft_printf("\n");
-	map_dup(&sl);
-	print_map(sl.map_dup);
-	free_so_long(&sl);
-	ft_printf("end of line\n");
-	return (0);
+void	print_map(char **map)
+{
+	int i;
+
+	i = 0;
+	while(map && map[i])
+	{
+		ft_printf("%s\n",map[i]);
+		i++;
+	}
 }

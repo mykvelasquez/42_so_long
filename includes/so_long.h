@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:32:05 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/18 14:12:31 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/20 12:30:37 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,25 @@ typedef struct s_list {
     int         x;
     int         y;
     char        *map;
-    char        *map_arr;
+    char        **map_arr;
+	char		**map_dup;
 }               l_list;
 
-int		map_validation(char **map_arr);
-int		map_check_rectangle(char **map_arr);
+typedef struct s_list{
+	char		player;
+	char		exit;
+	char		collectible;
+	char		wall;
+	char		space;
+}				u_list;
+
+int		map_check_rectangle(l_list *sl);
+int		map_check_chars(l_list *sl);
+int		map_check_enclosure(l_list *sl, char c);
+int		map_check_req_char(l_list *sl, u_list un, char c);
+void	**map_dup(l_list *sl);
+int		create_map(l_list *sl, u_list un, char **argv);
+int		map_validation(l_list *sl, u_list un);
 int		main(int argc, char **argv);
 
 #endif
