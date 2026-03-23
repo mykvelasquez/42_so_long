@@ -25,7 +25,12 @@ INCDIR		= includes
 INCFLAGS	= -I$(INCDIR) -I$(LIBDIR)/includes
 
 SRCS		= main.c \
-				src/map_validation.c
+				src/helper_1.c \
+				src/initialize.c \
+				src/map_create.c \
+				src/map_duplicate.c \
+				src/map_validation_1.c \
+				src/map_validation_2.c
 OBJS		= $(SRCS:.c=.o)
 
 #Commands
