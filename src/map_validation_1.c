@@ -13,25 +13,25 @@
 #include "so_long.h"
 
 // check map if RECTANGLE, get max y and x
-static void	get_map_dimension(m_list *sl)
+static void	get_map_dimension(map_data *sl)
 {
 	sl->x = 0;
 	sl->y = 0;
-	while(sl->map_arr[sl->y])
+	while(sl->map_str_arr[sl->y])
 		sl->y++;
-	while(sl->map_arr[0][sl->x])
+	while(sl->map_str_arr[0][sl->x])
 		sl->x++;
 }
 
-int map_check_rectangle(m_list *sl)
+int map_check_rectangle(map_data *sl)
 {
 	int i;
 	
 	get_map_dimension(&sl);
 	i = 1;
-	while(sl->map_arr[i])
+	while(sl->map_str_arr[i])
 	{
-		if((int)ft_strlen(sl->map_arr[i]) != sl->x)
+		if((int)ft_strlen(sl->map_str_arr[i]) != sl->x)
 			return (-1);
 		i++;
 	}
@@ -39,7 +39,7 @@ int map_check_rectangle(m_list *sl)
 }
 
 // check map if char 'c' EXIST and count is RIGHT. 
-int map_check_req_char(m_list *sl, u_list un, char c)
+int map_check_req_char(map_data *sl, map_unit un, char c)
 {
 	int i;
 	int j;
@@ -47,12 +47,12 @@ int map_check_req_char(m_list *sl, u_list un, char c)
 
 	count = 0;
 	i = 0;
-	while(sl->map_arr[i])
+	while(sl->map_str_arr[i])
 	{
 		j = 0;
-		while(sl->map_arr[i][j])
+		while(sl->map_str_arr[i][j])
 		{
-			if(sl->map_arr[i][j] == c)
+			if(sl->map_str_arr[i][j] == c)
 				count++;
 			j++;
 		}
@@ -65,20 +65,20 @@ int map_check_req_char(m_list *sl, u_list un, char c)
 	return (0);
 }
 
-int map_check_chars(m_list *sl, u_list un)
+int map_check_chars(map_data *sl, map_unit un)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while(sl->map_arr[i])
+	while(sl->map_str_arr[i])
 	{
 		j = 0;
-		while(sl->map_arr[i][j])
+		while(sl->map_str_arr[i][j])
 		{
-			if(sl->map_arr[i][j] != un.player && sl->map_arr[i][j] != un.wall
-				&& sl->map_arr[i][j] != un.exit && sl->map_arr[i][j] != un.space
-				&& sl->map_arr[i][j] != un.collectible)
+			if(sl->map_str_arr[i][j] != un.player && sl->map_str_arr[i][j] != un.wall
+				&& sl->map_str_arr[i][j] != un.exit && sl->map_str_arr[i][j] != un.space
+				&& sl->map_str_arr[i][j] != un.collectible)
 				return (-1);
 			j++;
 		}
@@ -92,9 +92,9 @@ int map_check_chars(m_list *sl, u_list un)
 }
 
 // MAIN VALIDATION FUNCTION
-int map_validation(m_list *sl, u_list un)
+int map_validation(map_data *sl, map_unit un)
 {
-	if(!sl->map_arr || !sl->map_arr[0])
+	if(!sl->map_str_arr || !sl->map_str_arr[0])
 		return (-1);
 	if (map_check_rectangle(&sl) == -1)
 		return (-1);

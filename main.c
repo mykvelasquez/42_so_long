@@ -14,8 +14,8 @@
 
 int		main(int argc, char **argv)
 {
-	m_list sl;
-	u_list un;
+	map_data sl;
+	map_unit un;
 
 	// number of arguments check
 	if (argc != 2)

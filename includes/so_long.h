@@ -26,10 +26,10 @@ typedef struct map {
     int         fd;
     int         x;
     int         y;
-    char        *map;
+    char        *map_str;
     char        **map_arr;
 	char		**map_dup;
-}               m_list;
+}               map_data;
 
 typedef struct unit {
 	char		player;
@@ -37,15 +37,15 @@ typedef struct unit {
 	char		collectible;
 	char		wall;
 	char		space;
-}				u_list;
+}				map_unit;
 
-int		map_check_rectangle(m_list *sl);
-int		map_check_chars(m_list *sl, u_list un);
-int		map_check_enclosure(m_list *sl, char c);
-int		map_check_req_char(m_list *sl, u_list un, char c);
-void	map_dup(m_list *sl);
-int		create_map(m_list *sl, u_list un, char **argv);
-int		map_validation(m_list *sl, u_list un);
+int		map_check_rectangle(map_data *sl);
+int		map_check_chars(map_data *sl, map_unit un);
+int		map_check_enclosure(map_data *sl, char c);
+int		map_check_req_char(map_data *sl, map_unit un, char c);
+void	**map_dup(map_data *sl);
+int		create_map(map_data *sl, map_unit un, char **argv);
+int		map_validation(map_data *sl, map_unit un);
 int		main(int argc, char **argv);
 
 #endif
