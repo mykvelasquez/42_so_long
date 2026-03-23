@@ -12,25 +12,21 @@
 
 #include "so_long.h"
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	map_data mapInfo;
-	map_unit unitInfo;
+	map_data	mapInfo;
+	map_unit	unitInfo;
 
-	// number of arguments check
 	if (argc != 2)
 		return (ft_putendl_fd("Usage: ./so_long <map.ber>", 2), 1);
 	init_so_long(&mapInfo, &unitInfo);
-	// create map data in **arr
-	create_map(&mapInfo, unitInfo, argv);
-	// print map
-	print_map(mapInfo.map_arr);
+	if (create_map(&mapInfo, unitInfo, argv) == -1)
+		return (free_so_long(&mapInfo), 1);
+	print_map(mapInfo.map_str_arr);
 	ft_printf("\n");
-	// create dup map for checking
-	map_dup(&mapInfo);
-	print_map(mapInfo.map_dup);
-	// free everything!
+	if (map_dup(&mapInfo) == -1)
+		return (free_so_long(&mapInfo), 1);
+	print_map(mapInfo.map_str_dup);
 	free_so_long(&mapInfo);
-	ft_printf("end of line\n");
 	return (0);
 }
