@@ -27,7 +27,7 @@ int map_check_rectangle(map_data *mapInfo)
 {
 	int i;
 	
-	get_map_dimension(&mapInfo);
+	get_map_dimension(mapInfo);
 	i = 1;
 	while(mapInfo->map_str_arr[i])
 	{
@@ -84,9 +84,9 @@ int map_check_chars(map_data *mapInfo, map_unit unitInfo)
 		}
 		i++;
 	}
-	if (map_check_req_char(&mapInfo, unitInfo, unitInfo.player) == -1 
-		|| map_check_req_char(&mapInfo, unitInfo, unitInfo.exit) == -1
-		|| map_check_req_char(&mapInfo, unitInfo, unitInfo.collectible) == -1)
+	if (map_check_req_char(mapInfo, unitInfo, unitInfo.player) == -1 
+		|| map_check_req_char(mapInfo, unitInfo, unitInfo.exit) == -1
+		|| map_check_req_char(mapInfo, unitInfo, unitInfo.collectible) == -1)
 		return (-1);
 	return (0);
 }
@@ -96,11 +96,11 @@ int map_validation(map_data *mapInfo, map_unit unitInfo)
 {
 	if(!mapInfo->map_str_arr || !mapInfo->map_str_arr[0])
 		return (-1);
-	if (map_check_rectangle(&mapInfo) == -1)
+	if (map_check_rectangle(mapInfo) == -1)
 		return (-1);
-	if (map_check_enclosure(&mapInfo, unitInfo.wall) == -1)
+	if (map_check_enclosure(mapInfo, unitInfo.wall) == -1)
 		return (-1);
-	if (map_check_chars(&mapInfo, unitInfo) == -1)
+	if (map_check_chars(mapInfo, unitInfo) == -1)
 		return (-1); 
 	return (0);
 }
