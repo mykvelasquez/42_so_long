@@ -14,7 +14,9 @@
 
 void	free_so_long(map_data *mapInfo)
 {
-	if (mapInfo->map_str != NULL)
+	if (!mapInfo)
+		return;
+	if (mapInfo->map_str)
 	{
 		free(mapInfo->map_str);
 		mapInfo->map_str = NULL;
