@@ -32,7 +32,7 @@ static void	map_dup_init(m_list *sl)
 	}
 }
 
-void	**map_dup(m_list *sl)
+void	map_dup(m_list *sl)
 {
 	char **dup;
 	int i;

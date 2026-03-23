@@ -40,10 +40,10 @@ typedef struct unit {
 }				u_list;
 
 int		map_check_rectangle(m_list *sl);
-int		map_check_chars(m_list *sl);
+int		map_check_chars(m_list *sl, u_list un);
 int		map_check_enclosure(m_list *sl, char c);
 int		map_check_req_char(m_list *sl, u_list un, char c);
-void	**map_dup(m_list *sl);
+void	map_dup(m_list *sl);
 int		create_map(m_list *sl, u_list un, char **argv);
 int		map_validation(m_list *sl, u_list un);
 int		main(int argc, char **argv);
