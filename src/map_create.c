@@ -14,36 +14,31 @@
 
 static int get_string(map_data *mapInfo, int fd)
 {
-	char *map_seg;
-	char *tmp;
+	char	*map_seg;
+	char	*tmp;
 
 	while ((map_seg = get_next_line(fd)) != NULL)
 	{
-		tmp = ft_strjoin(mapInfo->map_str,map_seg);
-		if(!tmp)
+		tmp = ft_strjoin(mapInfo->map_str, map_seg);
+		if (!tmp)
 		{
-			if (mapInfo->map_str)
-				free_so_long(mapInfo);
-			if (map_seg)
-				free (map_seg);
-			return (close(fd), ft_putendl_fd("Join Error", 2), -1);
-		}
-		if(mapInfo->map_str)
-			free_so_long(mapInfo);
-		if(map_seg)
 			free(map_seg);
+			close(fd);
+			return (ft_putendl_fd("Join Error", 2), -1);
+		}
+		free(mapInfo->map_str);
+		free(map_seg);
 		mapInfo->map_str = tmp;
 	}
 	close(fd);
 	if (mapInfo->map_str[0] == '\0')
-		return (free_so_long(mapInfo), ft_putendl_fd("Empty map", 2), -1);
+		return (ft_putendl_fd("Empty map", 2), -1);
 	return (0);
 }
 
 static int get_map_string(map_data *mapInfo, char **argv)
 {
 	int fd;
-	char *map_seg;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
@@ -56,17 +51,17 @@ static int get_map_string(map_data *mapInfo, char **argv)
 	return (0);
 }
 
-int create_map(map_data *mapInfo, map_unit un, char **argv)
+int create_map(map_data *mapInfo, map_unit unitInfo, char **argv)
 {
 	//read map;
-	if(get_map_string(mapInfo, argv) = -1)
-		return (free_so_long(mapInfo, ft_putendl_fd("Map Str Error", 2), 1))
+	if(get_map_string(mapInfo, argv) == -1)
+		return (ft_putendl_fd("Map Str Error", 2), 1);
 	// create map data in **arr
 	mapInfo->map_str_arr = ft_split(mapInfo->map_str, '\n');
 	if(!mapInfo->map_str_arr)
-		return (free_so_long(mapInfo), ft_putendl_fd("Split Error", 2), 1);
+		return (ft_putendl_fd("Split Error", 2), 1);
 	// validate map size (rectangle)
-	if(map_validation(&mapInfo, un) == -1)
-		return (free_so_long(mapInfo), ft_putendl_fd("Split Error", 2), -1);
+	if(map_validation(mapInfo, unitInfo) == -1)
+		return (ft_putendl_fd("Map Validation Error", 2), -1);
 	return 0;
 }
