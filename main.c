@@ -20,13 +20,16 @@ int		main(int argc, char **argv)
 	// number of arguments check
 	if (argc != 2)
 		return (ft_putendl_fd("Usage: ./so_long <map.ber>", 2), 1);
+	init_so_long(&sl, &un);
 	// create map data in **arr
 	create_map(&sl, un, argv);
 	// print map
 	print_map(sl.map_arr);
 	ft_printf("\n");
+	// create dup map for checking
 	map_dup(&sl);
 	print_map(sl.map_dup);
+	// free everything!
 	free_so_long(&sl);
 	ft_printf("end of line\n");
 	return (0);
