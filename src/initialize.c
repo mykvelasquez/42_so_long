@@ -19,9 +19,9 @@ void init_so_long(map_data *mapInfo, map_unit *unitInfo)
 	mapInfo->map_str = NULL;
 	mapInfo->map_str_arr = NULL;
 	mapInfo->map_str_dup = NULL;
-	un->player = 'P';
-	un->exit = 'E';
-	un->wall = '1';
-	un->space = '0';
-	un->collectible = 'C';
+	unitInfo->player = 'P';
+	unitInfo->exit = 'E';
+	unitInfo->wall = '1';
+	unitInfo->space = '0';
+	unitInfo->collectible = 'C';
 }
