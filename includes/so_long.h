@@ -27,8 +27,8 @@ typedef struct map {
     int         x;
     int         y;
     char        *map_str;
-    char        **map_arr;
-	char		**map_dup;
+    char        **map_str_arr;
+	char		**map_str_dup;
 }               map_data;
 
 typedef struct unit {
@@ -39,13 +39,16 @@ typedef struct unit {
 	char		space;
 }				map_unit;
 
-int		map_check_rectangle(map_data *mapInfo);
-int		map_check_chars(map_data *mapInfo, map_unit unitInfo);
-int		map_check_enclosure(map_data *mapInfo, char c);
-int		map_check_req_char(map_data *mapInfo, map_unit unitInfo, char c);
-void	**map_dup(map_data *mapInfo);
-int		create_map(map_data *mapInfo, map_unit unitInfo, char **argv);
-int		map_validation(map_data *mapInfo, map_unit unitInfo);
-int		main(int argc, char **argv);
+void	init_so_long(t_map_data *mapInfo, t_map_unit *unitInfo);
+void	free_so_long(t_map_data *mapInfo);
+void	print_map(char **map);
+
+int		create_map(t_map_data *mapInfo, t_map_unit unitInfo, char **argv);
+int		map_validation(t_map_data *mapInfo, t_map_unit unitInfo);
+int		map_check_rectangle(t_map_data *mapInfo);
+int		map_check_chars(t_map_data *mapInfo, t_map_unit unitInfo);
+int		map_check_enclosure(t_map_data *mapInfo, char c);
+int		map_check_req_char(t_map_data *mapInfo, t_map_unit unitInfo, char c);
+int		map_dup(t_map_data *mapInfo);
 
 #endif
