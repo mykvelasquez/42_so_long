@@ -38,6 +38,7 @@ int map_check_rectangle(map_data *mapInfo)
 	return (0);
 }
 
+
 // check map if char 'c' EXIST and count is RIGHT. 
 int map_check_req_char(map_data *mapInfo, map_unit unitInfo, char c)
 {
@@ -76,9 +77,11 @@ int map_check_chars(map_data *mapInfo, map_unit unitInfo)
 		j = 0;
 		while(mapInfo->map_str_arr[i][j])
 		{
-			if(mapInfo->map_str_arr[i][j] != un.player && mapInfo->map_str_arr[i][j] != un.wall
-				&& mapInfo->map_str_arr[i][j] != un.exit && mapInfo->map_str_arr[i][j] != un.space
-				&& mapInfo->map_str_arr[i][j] != un.collectible)
+			if(mapInfo->map_str_arr[i][j] != unitInfo.player 
+				&& mapInfo->map_str_arr[i][j] != unitInfo.wall
+				&& mapInfo->map_str_arr[i][j] != unitInfo.exit 
+				&& mapInfo->map_str_arr[i][j] != unitInfo.space
+				&& mapInfo->map_str_arr[i][j] != unitInfo.collectible)
 				return (-1);
 			j++;
 		}
