@@ -21,56 +21,64 @@ int map_check_enclosure(map_data *mapInfo, char c)
 	i = 0;
 	while(i < mapInfo->y)
 	{
-		if(mapInfo->map_str_arr[i][0] != c || mapInfo->map_str_arr[i][mapInfo->x - 1] != c)
+		if(mapInfo->map_str_arr[i][0] != c 
+			|| mapInfo->map_str_arr[i][mapInfo->x - 1] != c)
 			return (-1);
 		i++;
 	}
 	j = 0;
 	while (j < mapInfo->x)
 	{
-		if(mapInfo->map_str_arr[0][j] != c || mapInfo->map_str_arr[mapInfo->y - 1][j] != c)
+		if(mapInfo->map_str_arr[0][j] != c 
+			|| mapInfo->map_str_arr[mapInfo->y - 1][j] != c)
 			return (-1);
 		j++;
 	}
 	return 0;
 }
 
-static void	map_dup_init(map_data *mapInfo)
+static int	map_dup_init(map_data *mapInfo)
 {
 	int i;
 
-	mapInfo->map_str_dup = malloc(mapInfo->x * sizeof(char *));
+	mapInfo->map_str_dup = malloc((mapInfo->y + 1) * sizeof(char *));
 	if(!mapInfo->map_str_dup)
-		return NULL;
+		return (-1);
 	i = 0;
-	while(i < mapInfo->x)
+	while(i < mapInfo->y)
 	{
-		mapInfo->map_str_dup[i] = (char *)malloc(mapInfo->y * sizeof(char));
+		mapInfo->map_str_dup[i] = malloc((mapInfo->x + 1) * sizeof(char));
 		if (!mapInfo->map_str_dup[i])
 		{
-			free_so_long(mapInfo);
+			while (i > 0)
+				free(mapInfo->map_str_dup[--i]);
+			free(mapInfo->map_str_dup);
 			return (-1);
 		}
 		i++;
 	}
+	mapInfo->map_str_dup[i] = NULL;
+	return (0);
 }
 
-void	**map_dup(map_data *mapInfo)
+int	map_dup(map_data *mapInfo)
 {
-	char **dup;
 	int i;
 	int j;
 
 	i = 0;
-	map_dup_init(&mapInfo);
-	while(i < mapInfo->x)
+	if (map_dup_init(mapInfo) == -1)
+		return (-1);
+	while(i < mapInfo->y)
 	{
 		j = 0;
-		while(j < mapInfo-> y)
+		while(j < mapInfo->x)
 		{
-			mapInfo->map_str_arr[i][j] = mapInfo->map_str_dup[i][j];
+			mapInfo->map_str_dup[i][j] = mapInfo->map_str_arr[i][j];
 			j++;
 		}
+		mapInfo->map_str_dup[i][j] = '\0';
 		i++;
 	}
+	return (0);
 }

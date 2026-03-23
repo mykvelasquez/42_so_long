@@ -23,20 +23,20 @@ static int get_string(map_data *mapInfo, int fd)
 		if(!tmp)
 		{
 			if (mapInfo->map_str)
-				free_so_long(&mapInfo);
+				free_so_long(mapInfo);
 			if (map_seg)
 				free (map_seg);
 			return (close(fd), ft_putendl_fd("Join Error", 2), -1);
 		}
 		if(mapInfo->map_str)
-			free_so_long(&mapInfo);
+			free_so_long(mapInfo);
 		if(map_seg)
 			free(map_seg);
 		mapInfo->map_str = tmp;
 	}
 	close(fd);
 	if (mapInfo->map_str[0] == '\0')
-		return (free_so_long(&mapInfo), ft_putendl_fd("Empty map", 2), -1);
+		return (free_so_long(mapInfo), ft_putendl_fd("Empty map", 2), -1);
 	return (0);
 }
 
@@ -59,7 +59,8 @@ static int get_map_string(map_data *mapInfo, char **argv)
 int create_map(map_data *mapInfo, map_unit un, char **argv)
 {
 	//read map;
-	get_map_string(mapInfo, argv);
+	if(get_map_string(mapInfo, argv) = -1)
+		return (free_so_long(mapInfo, ft_putendl_fd("Map Str Error", 2), 1))
 	// create map data in **arr
 	mapInfo->map_str_arr = ft_split(mapInfo->map_str, '\n');
 	if(!mapInfo->map_str_arr)
