@@ -12,13 +12,13 @@
 
 #include "so_long.h"
 
-void init_so_long(map_data *sl, map_unit *un)
+void init_so_long(map_data *mapInfo, map_unit *unitInfo)
 {
-	sl->x = 0;
-	sl->y = 0;
-	sl->map_str = NULL;
-	sl->map_str_arr = NULL;
-	sl->map_str_dup = NULL;
+	mapInfo->x = 0;
+	mapInfo->y = 0;
+	mapInfo->map_str = NULL;
+	mapInfo->map_str_arr = NULL;
+	mapInfo->map_str_dup = NULL;
 	un->player = 'P';
 	un->exit = 'E';
 	un->wall = '1';

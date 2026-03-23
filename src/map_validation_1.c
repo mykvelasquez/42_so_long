@@ -13,25 +13,25 @@
 #include "so_long.h"
 
 // check map if RECTANGLE, get max y and x
-static void	get_map_dimension(map_data *sl)
+static void	get_map_dimension(map_data *mapInfo)
 {
-	sl->x = 0;
-	sl->y = 0;
-	while(sl->map_str_arr[sl->y])
-		sl->y++;
-	while(sl->map_str_arr[0][sl->x])
-		sl->x++;
+	mapInfo->x = 0;
+	mapInfo->y = 0;
+	while(mapInfo->map_str_arr[mapInfo->y])
+		mapInfo->y++;
+	while(mapInfo->map_str_arr[0][mapInfo->x])
+		mapInfo->x++;
 }
 
-int map_check_rectangle(map_data *sl)
+int map_check_rectangle(map_data *mapInfo)
 {
 	int i;
 	
-	get_map_dimension(&sl);
+	get_map_dimension(&mapInfo);
 	i = 1;
-	while(sl->map_str_arr[i])
+	while(mapInfo->map_str_arr[i])
 	{
-		if((int)ft_strlen(sl->map_str_arr[i]) != sl->x)
+		if((int)ft_strlen(mapInfo->map_str_arr[i]) != mapInfo->x)
 			return (-1);
 		i++;
 	}
@@ -39,7 +39,7 @@ int map_check_rectangle(map_data *sl)
 }
 
 // check map if char 'c' EXIST and count is RIGHT. 
-int map_check_req_char(map_data *sl, map_unit un, char c)
+int map_check_req_char(map_data *mapInfo, map_unit unitInfo, char c)
 {
 	int i;
 	int j;
@@ -47,60 +47,60 @@ int map_check_req_char(map_data *sl, map_unit un, char c)
 
 	count = 0;
 	i = 0;
-	while(sl->map_str_arr[i])
+	while(mapInfo->map_str_arr[i])
 	{
 		j = 0;
-		while(sl->map_str_arr[i][j])
+		while(mapInfo->map_str_arr[i][j])
 		{
-			if(sl->map_str_arr[i][j] == c)
+			if(mapInfo->map_str_arr[i][j] == c)
 				count++;
 			j++;
 		}
 		i++;
 	}
-	if ((c == un.player || c == un.exit) && count != 1)
+	if ((c == unitInfo.player || c == unitInfo.exit) && count != 1)
 		return (-1);
-	if (c == un.collectible && count < 1)
+	if (c == unitInfo.collectible && count < 1)
 		return (-1);
 	return (0);
 }
 
-int map_check_chars(map_data *sl, map_unit un)
+int map_check_chars(map_data *mapInfo, map_unit unitInfo)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while(sl->map_str_arr[i])
+	while(mapInfo->map_str_arr[i])
 	{
 		j = 0;
-		while(sl->map_str_arr[i][j])
+		while(mapInfo->map_str_arr[i][j])
 		{
-			if(sl->map_str_arr[i][j] != un.player && sl->map_str_arr[i][j] != un.wall
-				&& sl->map_str_arr[i][j] != un.exit && sl->map_str_arr[i][j] != un.space
-				&& sl->map_str_arr[i][j] != un.collectible)
+			if(mapInfo->map_str_arr[i][j] != un.player && mapInfo->map_str_arr[i][j] != un.wall
+				&& mapInfo->map_str_arr[i][j] != un.exit && mapInfo->map_str_arr[i][j] != un.space
+				&& mapInfo->map_str_arr[i][j] != un.collectible)
 				return (-1);
 			j++;
 		}
 		i++;
 	}
-	if (map_check_req_char(&sl, un, un.player) == -1 
-		|| map_check_req_char(&sl,un, un.exit) == -1
-		|| map_check_req_char(&sl,un, un.collectible) == -1)
+	if (map_check_req_char(&mapInfo, unitInfo, unitInfo.player) == -1 
+		|| map_check_req_char(&mapInfo, unitInfo, unitInfo.exit) == -1
+		|| map_check_req_char(&mapInfo, unitInfo, unitInfo.collectible) == -1)
 		return (-1);
 	return (0);
 }
 
 // MAIN VALIDATION FUNCTION
-int map_validation(map_data *sl, map_unit un)
+int map_validation(map_data *mapInfo, map_unit unitInfo)
 {
-	if(!sl->map_str_arr || !sl->map_str_arr[0])
+	if(!mapInfo->map_str_arr || !mapInfo->map_str_arr[0])
 		return (-1);
-	if (map_check_rectangle(&sl) == -1)
+	if (map_check_rectangle(&mapInfo) == -1)
 		return (-1);
-	if (map_check_enclosure(&sl, un.wall) == -1)
+	if (map_check_enclosure(&mapInfo, unitInfo.wall) == -1)
 		return (-1);
-	if (map_check_chars(&sl, un) == -1)
+	if (map_check_chars(&mapInfo, unitInfo) == -1)
 		return (-1); 
 	return (0);
 }

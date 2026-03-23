@@ -14,23 +14,23 @@
 
 int		main(int argc, char **argv)
 {
-	map_data sl;
-	map_unit un;
+	map_data mapInfo;
+	map_unit unitInfo;
 
 	// number of arguments check
 	if (argc != 2)
 		return (ft_putendl_fd("Usage: ./so_long <map.ber>", 2), 1);
-	init_so_long(&sl, &un);
+	init_so_long(&mapInfo, &unitInfo);
 	// create map data in **arr
-	create_map(&sl, un, argv);
+	create_map(&mapInfo, unitInfo, argv);
 	// print map
-	print_map(sl.map_arr);
+	print_map(mapInfo.map_arr);
 	ft_printf("\n");
 	// create dup map for checking
-	map_dup(&sl);
-	print_map(sl.map_dup);
+	map_dup(&mapInfo);
+	print_map(mapInfo.map_dup);
 	// free everything!
-	free_so_long(&sl);
+	free_so_long(&mapInfo);
 	ft_printf("end of line\n");
 	return (0);
 }

@@ -12,40 +12,40 @@
 
 #include "so_long.h"
 
-static void	map_dup_init(map_data *sl)
+static void	map_dup_init(map_data *mapInfo)
 {
 	int i;
 
-	sl->map_str_dup = malloc(sl->x * sizeof(char *));
-	if(!sl->map_str_dup)
+	mapInfo->map_str_dup = malloc(mapInfo->x * sizeof(char *));
+	if(!mapInfo->map_str_dup)
 		return NULL;
 	i = 0;
-	while(i < sl->x)
+	while(i < mapInfo->x)
 	{
-		sl->map_str_dup[i] = (char *)malloc(sl->y * sizeof(char));
-		if (!sl->map_str_dup[i])
+		mapInfo->map_str_dup[i] = (char *)malloc(mapInfo->y * sizeof(char));
+		if (!mapInfo->map_str_dup[i])
 		{
-			free_so_long(sl);
+			free_so_long(mapInfo);
 			return (-1);
 		}
 		i++;
 	}
 }
 
-void	map_dup(map_data *sl)
+void	map_dup(map_data *mapInfo)
 {
 	char **dup;
 	int i;
 	int j;
 
 	i = 0;
-	map_dup_init(&sl);
-	while(i < sl->x)
+	map_dup_init(&mapInfo);
+	while(i < mapInfo->x)
 	{
 		j = 0;
-		while(j < sl-> y)
+		while(j < mapInfo-> y)
 		{
-			sl->map_str_arr[i][j] = sl->map_str_dup[i][j];
+			mapInfo->map_str_arr[i][j] = mapInfo->map_str_dup[i][j];
 			j++;
 		}
 		i++;

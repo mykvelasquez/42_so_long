@@ -12,22 +12,22 @@
 
 #include "so_long.h"
 
-void	free_so_long(map_data *sl)
+void	free_so_long(map_data *mapInfo)
 {
-	if (sl->map_str != NULL)
+	if (mapInfo->map_str != NULL)
 	{
-		free(sl->map_str);
-		sl->map_str = NULL;
+		free(mapInfo->map_str);
+		mapInfo->map_str = NULL;
 	}
-	if (sl->map_str_arr != NULL)
+	if (mapInfo->map_str_arr != NULL)
 	{
-		ft_free_split(sl->map_str_arr);
-		sl->map_str_arr = NULL;
+		ft_free_split(mapInfo->map_str_arr);
+		mapInfo->map_str_arr = NULL;
 	}
-	if (sl->map_str_dup != NULL)
+	if (mapInfo->map_str_dup != NULL)
 	{
-		ft_free_split(sl->map_str_dup);
-		sl->map_str_dup = NULL;
+		ft_free_split(mapInfo->map_str_dup);
+		mapInfo->map_str_dup = NULL;
 	}
 }
 

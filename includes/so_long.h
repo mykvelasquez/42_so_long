@@ -39,13 +39,13 @@ typedef struct unit {
 	char		space;
 }				map_unit;
 
-int		map_check_rectangle(map_data *sl);
-int		map_check_chars(map_data *sl, map_unit un);
-int		map_check_enclosure(map_data *sl, char c);
-int		map_check_req_char(map_data *sl, map_unit un, char c);
-void	**map_dup(map_data *sl);
-int		create_map(map_data *sl, map_unit un, char **argv);
-int		map_validation(map_data *sl, map_unit un);
+int		map_check_rectangle(map_data *mapInfo);
+int		map_check_chars(map_data *mapInfo, map_unit unitInfo);
+int		map_check_enclosure(map_data *mapInfo, char c);
+int		map_check_req_char(map_data *mapInfo, map_unit unitInfo, char c);
+void	**map_dup(map_data *mapInfo);
+int		create_map(map_data *mapInfo, map_unit unitInfo, char **argv);
+int		map_validation(map_data *mapInfo, map_unit unitInfo);
 int		main(int argc, char **argv);
 
 #endif

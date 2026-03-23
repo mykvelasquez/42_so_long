@@ -12,35 +12,35 @@
 
 #include "so_long.h"
 
-static int get_string(map_data *sl, int fd)
+static int get_string(map_data *mapInfo, int fd)
 {
 	char *map_seg;
-	char tmp;
+	char *tmp;
 
 	while ((map_seg = get_next_line(fd)) != NULL)
 	{
-		tmp = ft_strjoin(sl->map_str,map_seg);
+		tmp = ft_strjoin(mapInfo->map_str,map_seg);
 		if(!tmp)
 		{
-			if (sl->map_str)
-				free_so_long(&sl);
+			if (mapInfo->map_str)
+				free_so_long(&mapInfo);
 			if (map_seg)
 				free (map_seg);
 			return (close(fd), ft_putendl_fd("Join Error", 2), -1);
 		}
-		if(sl->map_str)
-			free_so_long(&sl);
+		if(mapInfo->map_str)
+			free_so_long(&mapInfo);
 		if(map_seg)
 			free(map_seg);
-		sl->map_str = tmp;
+		mapInfo->map_str = tmp;
 	}
 	close(fd);
-	if (sl->map_str[0] == '\0')
-		return (free_so_long(&sl), ft_putendl_fd("Empty map", 2), -1);
+	if (mapInfo->map_str[0] == '\0')
+		return (free_so_long(&mapInfo), ft_putendl_fd("Empty map", 2), -1);
 	return (0);
 }
 
-static int get_map_string(map_data *sl, char **argv)
+static int get_map_string(map_data *mapInfo, char **argv)
 {
 	int fd;
 	char *map_seg;
@@ -48,24 +48,24 @@ static int get_map_string(map_data *sl, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		return (ft_putendl_fd("Error opening file", 2), -1);
-	sl->map_str = ft_strdup("");
-	if (!sl->map_str)
+	mapInfo->map_str = ft_strdup("");
+	if (!mapInfo->map_str)
 		return(close(fd),ft_putendl_fd("malloc Error", 2), -1);
-	if(get_string(&sl, fd) == -1)
+	if(get_string(mapInfo, fd) == -1)
 		return (-1);
 	return (0);
 }
 
-int create_map(map_data *sl, map_unit un, char **argv)
+int create_map(map_data *mapInfo, map_unit un, char **argv)
 {
 	//read map;
-	get_map_string(&sl, argv);
+	get_map_string(mapInfo, argv);
 	// create map data in **arr
-	sl->map_str_arr = ft_split(sl->map_str, '\n');
-	if(!sl->map_str_arr)
-		return (free_so_long(&sl), ft_putendl_fd("Split Error", 2), 1);
+	mapInfo->map_str_arr = ft_split(mapInfo->map_str, '\n');
+	if(!mapInfo->map_str_arr)
+		return (free_so_long(mapInfo), ft_putendl_fd("Split Error", 2), 1);
 	// validate map size (rectangle)
-	if(map_validation(&sl, un) == -1)
-		return (free_so_long(&sl), ft_putendl_fd("Split Error", 2), -1);
+	if(map_validation(&mapInfo, un) == -1)
+		return (free_so_long(mapInfo), ft_putendl_fd("Split Error", 2), -1);
 	return 0;
 }

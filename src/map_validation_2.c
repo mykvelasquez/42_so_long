@@ -13,62 +13,62 @@
 #include "so_long.h"
 
 // function that checks map.ber if enclosed with char 'c'
-int map_check_enclosure(map_data *sl, char c)
+int map_check_enclosure(map_data *mapInfo, char c)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while(i < sl->y)
+	while(i < mapInfo->y)
 	{
-		if(sl->map_str_arr[i][0] != c || sl->map_str_arr[i][sl->x - 1] != c)
+		if(mapInfo->map_str_arr[i][0] != c || mapInfo->map_str_arr[i][mapInfo->x - 1] != c)
 			return (-1);
 		i++;
 	}
 	j = 0;
-	while (j < sl->x)
+	while (j < mapInfo->x)
 	{
-		if(sl->map_str_arr[0][j] != c || sl->map_str_arr[sl->y - 1][j] != c)
+		if(mapInfo->map_str_arr[0][j] != c || mapInfo->map_str_arr[mapInfo->y - 1][j] != c)
 			return (-1);
 		j++;
 	}
 	return 0;
 }
 
-static void	map_dup_init(map_data *sl)
+static void	map_dup_init(map_data *mapInfo)
 {
 	int i;
 
-	sl->map_str_dup = malloc(sl->x * sizeof(char *));
-	if(!sl->map_str_dup)
+	mapInfo->map_str_dup = malloc(mapInfo->x * sizeof(char *));
+	if(!mapInfo->map_str_dup)
 		return NULL;
 	i = 0;
-	while(i < sl->x)
+	while(i < mapInfo->x)
 	{
-		sl->map_str_dup[i] = (char *)malloc(sl->y * sizeof(char));
-		if (!sl->map_str_dup[i])
+		mapInfo->map_str_dup[i] = (char *)malloc(mapInfo->y * sizeof(char));
+		if (!mapInfo->map_str_dup[i])
 		{
-			free_so_long(sl);
+			free_so_long(mapInfo);
 			return (-1);
 		}
 		i++;
 	}
 }
 
-void	**map_dup(map_data *sl)
+void	**map_dup(map_data *mapInfo)
 {
 	char **dup;
 	int i;
 	int j;
 
 	i = 0;
-	map_dup_init(&sl);
-	while(i < sl->x)
+	map_dup_init(&mapInfo);
+	while(i < mapInfo->x)
 	{
 		j = 0;
-		while(j < sl-> y)
+		while(j < mapInfo-> y)
 		{
-			sl->map_str_arr[i][j] = sl->map_str_dup[i][j];
+			mapInfo->map_str_arr[i][j] = mapInfo->map_str_dup[i][j];
 			j++;
 		}
 		i++;
