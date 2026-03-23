@@ -14,7 +14,7 @@
 
 int		main(int argc, char **argv)
 {
-	l_list sl;
+	m_list sl;
 	u_list un;
 
 	// number of arguments check

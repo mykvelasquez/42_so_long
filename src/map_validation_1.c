@@ -13,7 +13,7 @@
 #include "so_long.h"
 
 // check map if RECTANGLE, get max y and x
-static void	get_map_dimension(l_list *sl)
+static void	get_map_dimension(m_list *sl)
 {
 	sl->x = 0;
 	sl->y = 0;
@@ -23,7 +23,7 @@ static void	get_map_dimension(l_list *sl)
 		sl->x++;
 }
 
-int map_check_rectangle(l_list *sl)
+int map_check_rectangle(m_list *sl)
 {
 	int i;
 	
@@ -39,7 +39,7 @@ int map_check_rectangle(l_list *sl)
 }
 
 // check map if char 'c' EXIST and count is RIGHT. 
-int map_check_req_char(l_list *sl, u_list un, char c)
+int map_check_req_char(m_list *sl, u_list un, char c)
 {
 	int i;
 	int j;
@@ -65,7 +65,7 @@ int map_check_req_char(l_list *sl, u_list un, char c)
 	return (0);
 }
 
-int map_check_chars(l_list *sl, u_list un)
+int map_check_chars(m_list *sl, u_list un)
 {
 	int i;
 	int j;
@@ -92,7 +92,7 @@ int map_check_chars(l_list *sl, u_list un)
 }
 
 // MAIN VALIDATION FUNCTION
-int map_validation(l_list *sl, u_list un)
+int map_validation(m_list *sl, u_list un)
 {
 	if(!sl->map_arr || !sl->map_arr[0])
 		return (-1);

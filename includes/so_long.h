@@ -22,16 +22,16 @@
 # include <stdio.h>
 # include <unistd.h>
 
-typedef struct s_list {
+typedef struct map {
     int         fd;
     int         x;
     int         y;
     char        *map;
     char        **map_arr;
 	char		**map_dup;
-}               l_list;
+}               m_list;
 
-typedef struct s_list{
+typedef struct unit {
 	char		player;
 	char		exit;
 	char		collectible;
@@ -39,13 +39,13 @@ typedef struct s_list{
 	char		space;
 }				u_list;
 
-int		map_check_rectangle(l_list *sl);
-int		map_check_chars(l_list *sl);
-int		map_check_enclosure(l_list *sl, char c);
-int		map_check_req_char(l_list *sl, u_list un, char c);
-void	**map_dup(l_list *sl);
-int		create_map(l_list *sl, u_list un, char **argv);
-int		map_validation(l_list *sl, u_list un);
+int		map_check_rectangle(m_list *sl);
+int		map_check_chars(m_list *sl);
+int		map_check_enclosure(m_list *sl, char c);
+int		map_check_req_char(m_list *sl, u_list un, char c);
+void	**map_dup(m_list *sl);
+int		create_map(m_list *sl, u_list un, char **argv);
+int		map_validation(m_list *sl, u_list un);
 int		main(int argc, char **argv);
 
 #endif

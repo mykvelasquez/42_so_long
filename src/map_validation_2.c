@@ -13,7 +13,7 @@
 #include "so_long.h"
 
 // function that checks map.ber if enclosed with char 'c'
-int map_check_enclosure(l_list *sl, char c)
+int map_check_enclosure(m_list *sl, char c)
 {
 	int i;
 	int j;
@@ -35,7 +35,7 @@ int map_check_enclosure(l_list *sl, char c)
 	return 0;
 }
 
-static void	map_dup_init(l_list *sl)
+static void	map_dup_init(m_list *sl)
 {
 	int i;
 
@@ -55,7 +55,7 @@ static void	map_dup_init(l_list *sl)
 	}
 }
 
-void	**map_dup(l_list *sl)
+void	**map_dup(m_list *sl)
 {
 	char **dup;
 	int i;

@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static int get_string(l_list *sl, int fd)
+static int get_string(m_list *sl, int fd)
 {
 	char *map_seg;
 	char tmp;
@@ -26,8 +26,7 @@ static int get_string(l_list *sl, int fd)
 				free_so_long(&sl);
 			if (map_seg)
 				free (map_seg);
-			close(fd);
-			return (ft_putendl_fd("Join Error", 2), -1);
+			return (close(fd), ft_putendl_fd("Join Error", 2), -1);
 		}
 		if(sl->map)
 			free_so_long(&sl);
@@ -41,7 +40,7 @@ static int get_string(l_list *sl, int fd)
 	return (0);
 }
 
-static int get_map_string(l_list *sl, char **argv)
+static int get_map_string(m_list *sl, char **argv)
 {
 	int fd;
 	char *map_seg;
@@ -57,7 +56,7 @@ static int get_map_string(l_list *sl, char **argv)
 	return (0);
 }
 
-int create_map(l_list *sl, u_list un, char **argv)
+int create_map(m_list *sl, u_list un, char **argv)
 {
 	//read map;
 	get_map_string(&sl, argv);

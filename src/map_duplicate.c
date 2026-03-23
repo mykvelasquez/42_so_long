@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static void	map_dup_init(l_list *sl)
+static void	map_dup_init(m_list *sl)
 {
 	int i;
 
@@ -32,7 +32,7 @@ static void	map_dup_init(l_list *sl)
 	}
 }
 
-void	**map_dup(l_list *sl)
+void	**map_dup(m_list *sl)
 {
 	char **dup;
 	int i;

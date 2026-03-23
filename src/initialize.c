@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void init_so_long(l_list *sl, u_list *un)
+void init_so_long(m_list *sl, u_list *un)
 {
 	sl->x = 0;
 	sl->y = 0;

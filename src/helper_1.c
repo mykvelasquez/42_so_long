@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	free_so_long(l_list *sl)
+void	free_so_long(m_list *sl)
 {
 	if (sl->map != NULL)
 	{
