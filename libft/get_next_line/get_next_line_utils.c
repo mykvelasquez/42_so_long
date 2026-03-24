@@ -6,12 +6,11 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:56:28 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/02/26 15:06:20 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/24 09:46:29 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 char	*ft_strjoin_gnl(char const *s1, char const *s2)
 {

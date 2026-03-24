@@ -6,20 +6,20 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 13:38:30 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/02 13:41:07 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/24 09:47:11 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_free_split(char **split)
+void	ft_free_split(char **split)
 {
-	int i;
+	int		i;
 
 	i = 0;
-	while(split[i])
+	while (split[i])
 	{
-		free(split[i]);
+		free (split[i]);
 		i++;
 	}
 	free(split);
