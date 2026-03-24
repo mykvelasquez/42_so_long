@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:32:05 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/24 13:34:39 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/24 13:46:18 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct unit
 	char		collectible;
 	char		wall;
 	char		space;
+	char		enemy;
 	int			y_player;
 	int			x_player;
 }				t_unit;

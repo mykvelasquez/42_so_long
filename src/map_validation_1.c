@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:06:36 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/24 13:34:18 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/24 13:50:26 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int	map_check_chars(char **map_arr, t_unit unit_info)
 				&& map_arr[i][j] != unit_info.wall
 				&& map_arr[i][j] != unit_info.exit
 				&& map_arr[i][j] != unit_info.space
-				&& map_arr[i][j] != unit_info.collectible)
+				&& map_arr[i][j] != unit_info.collectible
+				&& map_arr[i][j] != unit_info.enemy)
 				return (-1);
 			j++;
 		}
@@ -103,6 +104,5 @@ int	map_validation(t_map *map_info, t_unit unit_info)
 		return (ft_putendl_fd(ft_map_error(3), 2), -1);
 	if (map_check_end_new_line(map_info) == -1)
 		return (ft_putendl_fd(ft_map_error(4), 2), -1);
-
 	return (0);
 }
