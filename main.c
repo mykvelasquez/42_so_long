@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 11:47:02 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/24 09:45:00 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/24 13:08:30 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int argc, char **argv)
 	ft_printf("\n");
 	if (map_dup(&map_info) == -1)
 		return (free_so_long(&map_info), 1);
+	if (map_check_find_path(&map_info, &unit_info) == -1)
+		return (-1);
 	print_map(map_info.map_str_dup);
 	free_so_long(&map_info);
 	return (0);

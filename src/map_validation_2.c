@@ -6,33 +6,78 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:09:39 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/24 09:44:42 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:54:44 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// function that checks map.ber if enclosed with char 'c'
-int	map_check_enclosure(t_map *mapInfo, char c)
+int	map_check_enclosure(t_map *map_info, char c)
 {
 	int		i;
 	int		j;
 
 	i = 0;
-	while (i < mapInfo->y)
+	while (i < map_info->y)
 	{
-		if (mapInfo->map_str_arr[i][0] != c
-			|| mapInfo->map_str_arr[i][mapInfo->x - 1] != c)
+		if (map_info->map_str_arr[i][0] != c
+			|| map_info->map_str_arr[i][map_info->x - 1] != c)
 			return (-1);
 		i++;
 	}
 	j = 0;
-	while (j < mapInfo->x)
+	while (j < map_info->x)
 	{
-		if (mapInfo->map_str_arr[0][j] != c
-			|| mapInfo->map_str_arr[mapInfo->y - 1][j] != c)
+		if (map_info->map_str_arr[0][j] != c
+			|| map_info->map_str_arr[map_info->y - 1][j] != c)
 			return (-1);
 		j++;
 	}
 	return (0);
+}
+
+int	map_check_end_new_line(t_map *map_info)
+{
+	char	*str;
+	char	*last;
+	int		len;
+
+	last = NULL;
+	str = get_next_line(map_info-> fd);
+	while (str)
+	{
+		if (last)
+			free(last);
+		last = str;
+		str = get_next_line(map_info-> fd);
+	}
+	if (last)
+	{
+		len = ft_strlen(last);
+		if (len > 0 && last[len - 1] == '\n')
+			return (-1);
+		free (last);
+	}
+	return (0);
+}
+
+int	map_check_file_format(char **argv)
+{
+	char	*filetype;
+	char	*filename;
+	int		i;
+
+	filetype = "ber";
+	filename = argv[1];
+	i = 0;
+	while (filename[i])
+		i++;
+	i--;
+	while (filename[i] != '.' && filename[i])
+		i--;
+	i++;
+	if (ft_strncmp(&filename[i], filetype, 3) != 0)
+		return (-1);
+	else
+		return (0);
 }

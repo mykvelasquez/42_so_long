@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:46:42 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/24 09:44:42 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/24 11:52:10 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,23 @@ void	free_so_long(t_map *map_info)
 		ft_free_split(map_info->map_str_dup);
 		map_info->map_str_dup = NULL;
 	}
+}
+
+char	*ft_map_error(int error)
+{
+	ft_printf("Error: ");
+	if (error == 1)
+		return ("Map not rectangle");
+	else if (error == 2)
+		return ("Map not enclosed");
+	else if (error == 3)
+		return ("Map does not meet required unit number");
+	else if (error == 4)
+		return ("Map has a new line at the end");
+	else if (error == 5)
+		return ("file not in proper format");
+	else
+		return (0);
 }
 
 void	print_map(char **map)

@@ -6,7 +6,7 @@
 #    By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/18 12:29:50 by mvelasqu          #+#    #+#              #
-#    Updated: 2026/03/18 14:12:59 by mvelasqu         ###   ########.fr        #
+#    Updated: 2026/03/24 12:35:19 by mvelasqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS		= main.c \
 				src/map_create.c \
 				src/map_duplicate.c \
 				src/map_validation_1.c \
-				src/map_validation_2.c
+				src/map_validation_2.c \
+				src/map_validation_3.c
 OBJS		= $(SRCS:.c=.o)
 
 #Commands

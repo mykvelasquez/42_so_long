@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:43:09 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/24 09:45:00 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/24 12:07:48 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,6 @@ void	init_so_long(t_map *map_info, t_unit *unit_info)
 	unit_info->wall = '1';
 	unit_info->space = '0';
 	unit_info->collectible = 'C';
+	unit_info->x_player = 0;
+	unit_info->y_player = 0;
 }
