@@ -1,58 +1,86 @@
 #include "minilibx-linux/mlx.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TILE_SIZE 32
 
 typedef struct s_img
 {
 	void	*img;
-	char 	*addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
+	int 	height;
+	int		width;
 }			t_img;
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+typedef struct s_assets
 {
-	char	*dst;
+	t_img	player;
+	t_img	wall;
+	t_img	space;
+	t_img	coolect;
+	t_img	exit;
+	t_img	enemy;
+}			t_assets;
 
-	dst = img->addr + (y * img->size_line + x * (img->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+typedef struct s_game
+{
+	void		*win;
+	void		*mlx;
+	t_assets	assets;
+}				t_game;
+
+int	print_key(int key, void *p)
+{
+	return (printf("Key %c : %d\n",key, key));
 }
 
-void	my_mlx_square_put(t_img *img, int height, int width)
+int	key_close_esc(int key, void *p)
 {
-	int	x;
-	int	y;
+	t_game *game;
 
-	y = 0;
-	while (y < height)
+	game = (t_game *)p;
+	printf("key : %d\n", key);
+	if (key == 65307)
 	{
-		x = 0;
-		while (x < width)
-		{
-			my_mlx_pixel_put(img, x, y, 0x0000FF00);
-			x++;
-		}
-		y++;
+		mlx_destroy_window(game->mlx, game->win);
+		exit (0);
 	}
+	return (0);
 }
+
+int key_close_x(void *p)
+{
+	t_game *game;
+	game = (t_game *)p;
+
+	mlx_destroy_window(game->mlx, game->win);
+	exit(0);
+	return 0;
+}
+
 
 int	main(void)
 {
-	void	*mlx;
-	void	*win;
-	t_img	img;
+	t_game game;
+	int x = 6;
+	int y = 6;
 
-	mlx = mlx_init();
-	if (!mlx)
+	game.mlx = mlx_init();
+	if (!game.mlx)
 		return (1);
-	win = mlx_new_window(mlx, 500, 500, "mlx test");
-	if (!win)
+	game.win = mlx_new_window(game.mlx, x, y, "mlx test");
+	if (!game.win)
 		return (1);
-	img.img = mlx_new_image(mlx,500,500);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
-		&img.size_line, &img.endian);
-	my_mlx_square_put(&img, 50, 50);
-	mlx_put_image_to_window(mlx, win, img.img, 100, 0);
-	mlx_loop(mlx);
+	if (!(game.assets.player.img = mlx_xpm_file_to_image(game.mlx, "open.xpm",
+			game.assets.player.height*TILE_SIZE,game.assets.player.width*TILE_SIZE)))
+    {
+      printf(" !! KO !!\n");
+      exit(1);
+    }
+	mlx_put_image_to_window(game.mlx,game.win,game.assets.player.img,0,0);
+	mlx_destroy_window(game.mlx, game.win);
+	mlx_hook(game.win, 2, 1L<<0, key_close_esc, &game);
+	mlx_hook(game.win, 17, 0, key_close_x, &game);
+	mlx_loop(game.mlx);
 	
 	return (0);
 }
