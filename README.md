@@ -145,3 +145,19 @@ Graphics library that allows you to render something in screen. its a 42 library
 - convert ``map`` data to a string using gnl
 - split ``map`` to ``map_arr``
 - check ``map_arr`` dimensions, print
+
+## Developer Notes
+
+## mlx study notes
+
+1. step1: initializing and opening a window. These are the function you will need:
+- ``void	*mlx_init();`` -> needed before everything else. returns 0 if failed.
+- ``void	*mlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title);`` -> makes a window, returns 0 when failed.
+- ``int	mlx_loop (void *mlx_ptr);`` -> keeps the program/process alive and listen to events.
+
+2. step2: to close the window using 'esc' and 'x' button at the top left corner:
+- ``int	mlx_hook(void *win_ptr, int x_event, int x_mask, int (*funct)(), void *param);`` -> generic hook for all events and minilibX functions that can be hook. Check macro and def from X11/X.h if needed.
+- create my own function as called out in ``mlx_hook`` to process the arguments. I made two functions ``key_close_esc(int key, void *p)`` and ``key_close_x(void *p)`` that allows me to close the windows using key 'esc' and pressing 'x' button.
+
+3. step3: to print image in the window.
+- you need to convert image (jpg,png, etc.) to xpm file. 
