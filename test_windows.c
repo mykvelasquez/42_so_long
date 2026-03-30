@@ -16,7 +16,7 @@ typedef struct s_assets
 	t_img	player;
 	t_img	wall;
 	t_img	space;
-	t_img	coolect;
+	t_img	collect;
 	t_img	exit;
 	t_img	enemy;
 }			t_assets;
@@ -61,8 +61,8 @@ int key_close_x(void *p)
 int	main(void)
 {
 	t_game game;
-	int x = 6;
-	int y = 6;
+	int x = 500;
+	int y = 500;
 
 	game.mlx = mlx_init();
 	if (!game.mlx)
@@ -70,14 +70,13 @@ int	main(void)
 	game.win = mlx_new_window(game.mlx, x, y, "mlx test");
 	if (!game.win)
 		return (1);
-	if (!(game.assets.player.img = mlx_xpm_file_to_image(game.mlx, "open.xpm",
-			game.assets.player.height*TILE_SIZE,game.assets.player.width*TILE_SIZE)))
+	if (!(game.assets.player.img = mlx_xpm_file_to_image(game.mlx, "open24.xpm", 
+		&game.assets.player.width, &game.assets.player.height)))
     {
       printf(" !! KO !!\n");
       exit(1);
     }
 	mlx_put_image_to_window(game.mlx,game.win,game.assets.player.img,0,0);
-	mlx_destroy_window(game.mlx, game.win);
 	mlx_hook(game.win, 2, 1L<<0, key_close_esc, &game);
 	mlx_hook(game.win, 17, 0, key_close_x, &game);
 	mlx_loop(game.mlx);
