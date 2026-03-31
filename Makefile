@@ -6,7 +6,7 @@
 #    By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/18 12:29:50 by mvelasqu          #+#    #+#              #
-#    Updated: 2026/03/31 14:18:31 by mvelasqu         ###   ########.fr        #
+#    Updated: 2026/03/31 14:47:29 by mvelasqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,16 +44,16 @@ OBJS		= $(SRCS:.c=.o)
 #Commands
 all: $(NAME)
 
-$(NAME): $(LIBFLAGS) $(OBJS) $(INCDIR)/so_long.h
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBFLAGS) $(MLX) $(MLX_LIBS) -o $(NAME)
+$(NAME): $(LIBFLAGS) $(OBJS) $(LIBFLAGS) $(MLXFLAGS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBFLAGS) $(MLXFLAGS) $(MLX_LIBS) -o $(NAME)
 
 $(LIBFLAGS):
 	$(MAKE) -C $(LIBDIR)
 
-$(MLX):
+$(MLXFLAGS):
 	$(MAKE) -C $(MLXDIR)
 
-%.o: %.c
+%.o: %.c $(INCDIR)/so_long.h
 	$(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@
 
 clean:

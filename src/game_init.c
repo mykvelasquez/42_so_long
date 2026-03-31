@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 12:21:03 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 14:12:39 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:40:48 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info)
 int		start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info)
 {
 	init_game(game);
+	game_load_data(game, map_info, unit_info);
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (-1);
@@ -84,6 +85,5 @@ int		start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info)
 		|| !game->assets.space.img || !game->assets.collect.img
 		|| !game->assets.exit.img || !game->assets.enemy.img)
 		return (-1);
-	game_load_data(game, map_info, unit_info);
 	return (0);
 }
