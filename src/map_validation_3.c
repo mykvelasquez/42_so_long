@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 12:01:37 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 14:09:40 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:32:25 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,15 @@ int map_check_find_path(t_map *map_info, t_unit *unit_info)
 		return (-1);
 	if (find_start(map_info, unit_info) == -1)
 		return (-1);
+	if (find_exit(map_info, unit_info) == -1)
+		return (-1);
 	flood_fill(map_info, *unit_info, unit_info->y_player, unit_info->x_player);
 	m_dup = map_info->map_str_dup;
-	if (map_check_req_char(m_dup, *unit_info, unit_info->exit) == 0)
+	if (map_check_req_char(m_dup, unit_info, unit_info->exit) == 0)
 		return (ft_putendl_fd("Error: Exit inaccessible.", 2), -1);
-	if (map_check_req_char(m_dup, *unit_info, unit_info->collectible) == 0)
+	if (map_check_req_char(m_dup, unit_info, unit_info->collectible) == 0)
 		return (ft_putendl_fd("Error: Collectible inaccessible.", 2), 0);
-	if (map_check_req_char(m_dup, *unit_info, unit_info->space) == 0)
+	if (map_check_req_char(m_dup, unit_info, unit_info->space) == 0)
 		return (ft_putendl_fd("Error: Some area not accessible.", 2), -1);
 	else
 	return (0);
