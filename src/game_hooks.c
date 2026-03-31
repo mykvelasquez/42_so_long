@@ -6,19 +6,19 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:29:40 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 13:29:47 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/31 13:43:00 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	print_key(int key, void *p)
+int	game_print_key(int key, void *p)
 {
 	(void)p;
 	return (printf("Key %c : %d\n",key, key));
 }
 
-int	key_close_esc(int key, void *p)
+int	game_key_close_esc(int key, void *p)
 {
 	t_game *game;
 
@@ -32,7 +32,7 @@ int	key_close_esc(int key, void *p)
 	return (0);
 }
 
-int key_close_x(void *p)
+int game_key_close_x(void *p)
 {
 	t_game *game;
 	game = (t_game *)p;

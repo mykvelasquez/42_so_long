@@ -6,14 +6,14 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:06:36 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 12:40:49 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:01:46 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 
-static void	get_map_dimension(t_map *map_info)
+static void	map_get_dimension(t_map *map_info)
 {
 	map_info->x = 0;
 	map_info->y = 0;
@@ -28,7 +28,7 @@ int		map_check_rectangle(t_map *map_info)
 {
 	int		i;
 
-	get_map_dimension(map_info);
+	map_get_dimension(map_info);
 	i = 1;
 	while (map_info->map_str_arr[i])
 	{

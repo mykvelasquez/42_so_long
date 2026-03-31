@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 12:21:03 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 12:41:45 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/31 13:55:15 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_game(t_game *game)
 	game->collect_count = 0;
 }
 
-void	load_assets(t_game *game)
+void	game_load_assets(t_game *game)
 {
 	game->assets.player.img = mlx_xpm_file_to_image(
 		game->mlx, "assets/player.xpm",
@@ -54,10 +54,8 @@ void	load_assets(t_game *game)
 		&game->assets.enemy.width, &game->assets.enemy.height);
 }
 
-int		load_game(t_game *game, t_map *map_info, t_unit *unit_info)
+int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info)
 {
-	if (get_game_data(map_info, unit_info) == -1)
-		return (-1);
 	game->map = map_info->map_str_dup;
 	game->map_width = map_info->x;
 	game->map_height = map_info->y;
@@ -68,3 +66,4 @@ int		load_game(t_game *game, t_map *map_info, t_unit *unit_info)
 	game->collect_count = unit_info->collect_count;
 	return (0);
 }
+

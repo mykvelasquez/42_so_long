@@ -6,13 +6,13 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:09:04 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 13:29:02 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/31 13:43:18 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	cleanup_game(t_game *game)
+void	game_cleanup(t_game *game)
 {
 	if (game->assets.player.img)
 		mlx_destroy_image(game->mlx, game->assets.player.img);
