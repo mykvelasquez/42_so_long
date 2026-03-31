@@ -6,7 +6,7 @@
 #    By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/18 12:29:50 by mvelasqu          #+#    #+#              #
-#    Updated: 2026/03/24 12:35:19 by mvelasqu         ###   ########.fr        #
+#    Updated: 2026/03/31 10:32:50 by mvelasqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,12 @@ RM			= rm -f
 LIBDIR		= libft
 LIBFLAGS	= $(LIBDIR)/libft.a
 
+MLXDIR		= minilibx-linux
+MLXFLAGS	= $(MLXDIR)/libmlx.a
+MLX_LIBS	= -lXext -lX11 -lbsd -lm
+
 INCDIR		= includes
-INCFLAGS	= -I$(INCDIR) -I$(LIBDIR)/includes
+INCFLAGS	= -I$(INCDIR) -I$(LIBDIR)/includes -I$(MLXDIR)
 
 SRCS		= main.c \
 				src/helper_1.c \
@@ -38,10 +42,13 @@ OBJS		= $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFLAGS) $(OBJS) $(INCDIR)/so_long.h
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBFLAGS) $(MLX) $(MLX_LIBS) -o $(NAME)
 
 $(LIBFLAGS):
 	$(MAKE) -C $(LIBDIR)
+
+$(MLX):
+	$(MAKE) -C $(MLXDIR)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@
@@ -49,10 +56,12 @@ $(LIBFLAGS):
 clean:
 	$(RM) $(OBJS)
 	$(MAKE) -C $(LIBDIR) clean
+	$(MAKE) -C $(MLXDIR) clean
 
 fclean:
 	$(RM) $(NAME) $(OBJS)
 	$(MAKE) -C $(LIBDIR) fclean
+
 
 re:
 	$(MAKE) fclean all

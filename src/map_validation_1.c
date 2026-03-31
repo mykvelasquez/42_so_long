@@ -6,11 +6,12 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:06:36 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/24 13:50:26 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/31 12:40:49 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 
 static void	get_map_dimension(t_map *map_info)
 {
@@ -22,7 +23,8 @@ static void	get_map_dimension(t_map *map_info)
 		map_info-> x++;
 }
 
-int	map_check_rectangle(t_map *map_info)
+
+int		map_check_rectangle(t_map *map_info)
 {
 	int		i;
 
@@ -37,7 +39,7 @@ int	map_check_rectangle(t_map *map_info)
 	return (0);
 }
 
-int	map_check_req_char(char **map_arr, t_unit unit_info, char c)
+int		map_check_req_char(char **map_arr, t_unit *unit_info, char c)
 {
 	int		i;
 	int		j;
@@ -56,14 +58,16 @@ int	map_check_req_char(char **map_arr, t_unit unit_info, char c)
 		}
 		i++;
 	}
-	if ((c == unit_info.player || c == unit_info.exit) && count != 1)
+	if ((c == unit_info->player || c == unit_info->exit) && count != 1)
 		return (-1);
-	if (c == unit_info.collectible && count < 1)
+	if (c == unit_info->collectible && count < 1)
 		return (-1);
+	if (c == unit_info->collectible)
+		unit_info->collect_count = count;
 	return (0);
 }
 
-int	map_check_chars(char **map_arr, t_unit unit_info)
+int		map_check_chars(char **map_arr, t_unit *unit_info)
 {
 	int		i;
 	int		j;
@@ -74,33 +78,33 @@ int	map_check_chars(char **map_arr, t_unit unit_info)
 		j = 0;
 		while (map_arr[i][j])
 		{
-			if (map_arr[i][j] != unit_info.player
-				&& map_arr[i][j] != unit_info.wall
-				&& map_arr[i][j] != unit_info.exit
-				&& map_arr[i][j] != unit_info.space
-				&& map_arr[i][j] != unit_info.collectible
-				&& map_arr[i][j] != unit_info.enemy)
+			if (map_arr[i][j] != unit_info->player
+				&& map_arr[i][j] != unit_info->wall
+				&& map_arr[i][j] != unit_info->exit
+				&& map_arr[i][j] != unit_info->space
+				&& map_arr[i][j] != unit_info->collectible
+				&& map_arr[i][j] != unit_info->enemy)
 				return (-1);
 			j++;
 		}
 		i++;
 	}
-	if (map_check_req_char(map_arr, unit_info, unit_info.player) == -1
-		|| map_check_req_char(map_arr, unit_info, unit_info.exit) == -1
-		|| map_check_req_char(map_arr, unit_info, unit_info.collectible) == -1)
+	if (map_check_req_char(map_arr, unit_info, unit_info->player) == -1
+		|| map_check_req_char(map_arr, unit_info, unit_info->exit) == -1
+		|| map_check_req_char(map_arr, unit_info, unit_info->collectible) == -1)
 		return (-1);
 	return (0);
 }
 
-int	map_validation(t_map *map_info, t_unit unit_info)
+int		map_validation(t_map *map_info, t_unit *unit_info)
 {
-	if (!map_info-> map_str_arr || !map_info-> map_str_arr[0])
+	if (!map_info->map_str_arr || !map_info->map_str_arr[0])
 		return (-1);
 	if (map_check_rectangle(map_info) == -1)
 		return (ft_putendl_fd(ft_map_error(1), 2), -1);
-	if (map_check_enclosure(map_info, unit_info.wall) == -1)
+	if (map_check_enclosure(map_info, unit_info->wall) == -1)
 		return (ft_putendl_fd(ft_map_error(2), 2), -1);
-	if (map_check_chars(map_info->map_str_arr, unit_info) == -1)
+	if (map_check_chars(map_info->map_str_arr, &unit_info) == -1)
 		return (ft_putendl_fd(ft_map_error(3), 2), -1);
 	if (map_check_end_new_line(map_info) == -1)
 		return (ft_putendl_fd(ft_map_error(4), 2), -1);

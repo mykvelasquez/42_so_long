@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize.c                                       :+:      :+:    :+:   */
+/*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/20 11:43:09 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/24 13:46:46 by mvelasqu         ###   ########.fr       */
+/*   Created: 2026/03/31 12:21:03 by mvelasqu          #+#    #+#             */
+/*   Updated: 2026/03/31 12:41:45 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_so_long(t_map *map_info, t_unit *unit_info)
+void	init_game(t_game *game)
 {
-	map_info->x = 0;
-	map_info->y = 0;
-	map_info->map_str = NULL;
-	map_info->map_str_arr = NULL;
-	map_info->map_str_dup = NULL;
-	unit_info->player = 'P';
-	unit_info->exit = 'E';
-	unit_info->wall = '1';
-	unit_info->space = '0';
-	unit_info->collectible = 'C';
-	unit_info->enemy = 'X';
-	unit_info->x_player = 0;
-	unit_info->y_player = 0;
+	game->win = NULL;
+	game->mlx = NULL;
+	game->assets.player.img = NULL;
+	game->assets.wall.img = NULL;
+	game->assets.space.img = NULL;
+	game->assets.collect.img = NULL;
+	game->assets.exit.img = NULL;
+	game->assets.enemy.img = NULL;
+	game->map = NULL;
+	game->map_width = 0;
+	game->map_height = 0;
+	game->player_x = 0;
+	game->player_y = 0;
+	game->exit_x = 0;
+	game->exit_y = 0;
+	game->collect_count = 0;
 }
 
 void	load_assets(t_game *game)
@@ -40,13 +43,28 @@ void	load_assets(t_game *game)
 	game->assets.space.img = mlx_xpm_file_to_image(
 		game->mlx, "assets/floor.xpm",
 		&game->assets.space.width, &game->assets.space.height);
-	game->assets.collectible.img = mlx_xpm_file_to_image(
+	game->assets.collect.img = mlx_xpm_file_to_image(
 		game->mlx, "assets/chest.xpm",
-		&game->assets.collectible.width, &game->assets.collectible.height);
+		&game->assets.collect.width, &game->assets.collect.height);
 	game->assets.exit.img = mlx_xpm_file_to_image(
 		game->mlx, "assets/exit.xpm",
 		&game->assets.exit.width, &game->assets.exit.height);
 	game->assets.enemy.img = mlx_xpm_file_to_image(
 		game->mlx, "assets/enemy.xpm",
 		&game->assets.enemy.width, &game->assets.enemy.height);
+}
+
+int		load_game(t_game *game, t_map *map_info, t_unit *unit_info)
+{
+	if (get_game_data(map_info, unit_info) == -1)
+		return (-1);
+	game->map = map_info->map_str_dup;
+	game->map_width = map_info->x;
+	game->map_height = map_info->y;
+	game->player_x = unit_info->x_player;
+	game->player_y = unit_info->y_player;
+	game->exit_x = unit_info->x_exit;
+	game->exit_y = unit_info->y_exit;
+	game->collect_count = unit_info->collect_count;
+	return (0);
 }
