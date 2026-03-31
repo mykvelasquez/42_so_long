@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:47:19 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 13:58:13 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:24:41 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	map_get_string(t_map *map_info, char **argv)
 int	map_create(t_map *map_info, t_unit unit_info, char **argv)
 {
 	if (map_check_file_format(argv) == -1)
-		return (ft_putendl_fd(ft_map_error(5), 2), -1);
+		return (ft_putendl_fd(map_error_str(5), 2), -1);
 	if (map_get_string(map_info, argv) == -1)
 		return (-1);
 	map_info->map_str_arr = ft_split(map_info->map_str, '\n');

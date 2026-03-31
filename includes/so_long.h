@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:32:05 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 14:12:39 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:28:14 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,11 @@ char	*map_error_str(int error);
 void	map_print(char **map);
 void	map_get_dimension(t_map *map_info);
 int		map_create(t_map *map_info, t_unit unit_info, char **argv);
-int		map_validation(t_map *map_info, t_unit unit_info);
+int		map_validation(t_map *map_info, t_unit *unit_info);
 int		map_check_rectangle(t_map *map_info);
-int		map_check_chars(char **map_arr, t_unit unit_info);
+int		map_check_chars(char **map_arr, t_unit *unit_info);
 int		map_check_enclosure(t_map *map_info, char c);
-int		map_check_req_char(char **map_arr, t_unit unit_info, char c);
+int		map_check_req_char(char **map_arr, t_unit *unit_info, char c);
 int		map_check_end_new_line(t_map *map_info);
 int		map_check_file_format(char **argv);
 int		map_check_find_path(t_map *map_info, t_unit *unit_info);

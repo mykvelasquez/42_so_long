@@ -6,14 +6,14 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:06:36 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 14:09:56 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:28:48 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 
-static void	map_get_dimension(t_map *map_info)
+void	map_get_dimension(t_map *map_info)
 {
 	map_info->x = 0;
 	map_info->y = 0;
@@ -101,12 +101,12 @@ int		map_validation(t_map *map_info, t_unit *unit_info)
 	if (!map_info->map_str_arr || !map_info->map_str_arr[0])
 		return (-1);
 	if (map_check_rectangle(map_info) == -1)
-		return (ft_putendl_fd(ft_map_error(1), 2), -1);
+		return (ft_putendl_fd(map_error_str(1), 2), -1);
 	if (map_check_enclosure(map_info, unit_info->wall) == -1)
-		return (ft_putendl_fd(ft_map_error(2), 2), -1);
-	if (map_check_chars(map_info->map_str_arr, &unit_info) == -1)
-		return (ft_putendl_fd(ft_map_error(3), 2), -1);
+		return (ft_putendl_fd(map_error_str(2), 2), -1);
+	if (map_check_chars(map_info->map_str_arr, unit_info) == -1)
+		return (ft_putendl_fd(map_error_str(3), 2), -1);
 	if (map_check_end_new_line(map_info) == -1)
-		return (ft_putendl_fd(ft_map_error(4), 2), -1);
+		return (ft_putendl_fd(map_error_str(4), 2), -1);
 	return (0);
 }
