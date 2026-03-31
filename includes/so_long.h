@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:32:05 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 14:01:46 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:11:05 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_game
 	int			collect_count;
 }				t_game;
 
+int		start_so_long(int argc, char **argv, t_map *map_info, t_unit unit_info);
 void	init_so_long(t_map *map_info, t_unit *unit_info);
 void	map_free(t_map *map_info);
 char	*map_error_str(int error);
@@ -100,6 +101,7 @@ int		map_check_end_new_line(t_map *map_info);
 int		map_check_file_format(char **argv);
 int		map_check_find_path(t_map *map_info, t_unit *unit_info);
 int		map_dup(t_map *map_info);
+int		start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info);
 void	init_game(t_game *game);
 void	game_load_assets(t_game *game);
 int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info);

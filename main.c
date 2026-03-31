@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 11:47:02 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 13:59:02 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:10:13 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,9 @@ int	main(int argc, char **argv)
 	if (start_so_long(argc, argv, &map_info, unit_info) == -1)
 		return (1);
 	// Initialize game structure
-
-	game.mlx = mlx_init();
-	if (!game.mlx)
+	if (start_game_so_long(&game, &map_info, &unit_info) == -1)
 		return (1);
-	// Initialize window
-	game.win = mlx_new_window(game.mlx,
-			game.map_width * TILE_SIZE,
-			game.map_height * TILE_SIZE,
-			"mlx test");
-	if (!game.win)
-		return (1);
-	load_assets(&game);
+	
 	render_map(&game);
 	printf("%d\n", mlx_hook(game.win, 2, 1L << 0, game_key_close_esc, &game));
 	printf("%d\n", mlx_hook(game.win, 17, 0, game_key_close_x, &game));
