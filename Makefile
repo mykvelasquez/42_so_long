@@ -6,7 +6,7 @@
 #    By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/18 12:29:50 by mvelasqu          #+#    #+#              #
-#    Updated: 2026/03/31 10:32:50 by mvelasqu         ###   ########.fr        #
+#    Updated: 2026/03/31 14:18:31 by mvelasqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,13 +29,16 @@ INCDIR		= includes
 INCFLAGS	= -I$(INCDIR) -I$(LIBDIR)/includes -I$(MLXDIR)
 
 SRCS		= main.c \
-				src/helper_1.c \
-				src/initialize.c \
+				src/map_helper.c \
+				src/map_init.c \
 				src/map_create.c \
 				src/map_duplicate.c \
 				src/map_validation_1.c \
 				src/map_validation_2.c \
-				src/map_validation_3.c
+				src/map_validation_3.c \
+				src/game_helper.c \
+				src/game_hooks.c \
+				src/game_init.c
 OBJS		= $(SRCS:.c=.o)
 
 #Commands

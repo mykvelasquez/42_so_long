@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:46:42 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 14:09:58 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:16:47 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*map_error_str(int error)
 	else if (error == 5)
 		return ("file not in proper format");
 	else
-		return (0);
+		return ("error not found");
 }
 
 void	map_print(char **map)
