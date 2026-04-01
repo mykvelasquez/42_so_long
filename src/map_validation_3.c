@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 12:01:37 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 14:32:25 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/01 11:21:27 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static int find_start(t_map *map_info, t_unit *unit_info)
 		{
 			if(map_info->map_str_dup[i][j] == unit_info->player)
 			{
-				unit_info->y_player = i;
-				unit_info->x_player = j;
 				return (0);
 			}
 			j++;
@@ -49,8 +47,6 @@ static int find_exit(t_map *map_info, t_unit *unit_info)
 		{
 			if(map_info->map_str_dup[i][j] == unit_info->player)
 			{
-				unit_info->y_exit = i;
-				unit_info->x_exit = j;
 				return (0);
 			}
 			j++;

@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:43:09 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 14:22:11 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/01 11:18:53 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int start_so_long(int argc, char **argv, t_map *map_info, t_unit unit_info)
 	if (map_create(map_info, unit_info, argv) == -1)
 		return (map_free(map_info), -1);
 	map_print(map_info->map_str_arr);
+	printf("start y = %d ; x = %d\n", unit_info.y_player, unit_info.x_player);
 	ft_printf("\n");
 	if (map_dup(map_info) == -1)
 		return (map_free(map_info), -1);

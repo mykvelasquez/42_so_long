@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:32:05 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 14:28:14 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/01 10:25:52 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,14 @@ int		map_check_find_path(t_map *map_info, t_unit *unit_info);
 int		map_dup(t_map *map_info);
 int		start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info);
 void	init_game(t_game *game);
-void	game_load_assets(t_game *game);
+int		game_load_assets_static(t_game *game);
+int		game_load_assets_obj(t_game *game);
 int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info);
 void	game_cleanup(t_game *game);
 int		game_print_key(int key, void *p);
 int		game_key_close_esc(int key, void *p);
 int		game_key_close_x(void *p);
+void	game_render_map(t_game *game);
 int		main(int argc, char **argv);
 
 #endif
