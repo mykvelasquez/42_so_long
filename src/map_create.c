@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:47:19 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/01 11:19:51 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/01 11:30:21 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static int map_find_exit(t_map *map_info, t_unit *unit_info)
 	return (-1);
 }
 
-int	map_create(t_map *map_info, t_unit unit_info, char **argv)
+int	map_create(t_map *map_info, t_unit *unit_info, char **argv)
 {
 	if (map_check_file_format(argv) == -1)
 		return (ft_putendl_fd(map_error_str(5), 2), -1);
@@ -107,11 +107,11 @@ int	map_create(t_map *map_info, t_unit unit_info, char **argv)
 	map_info->map_str_arr = ft_split(map_info->map_str, '\n');
 	if (!map_info->map_str_arr)
 		return (ft_putendl_fd("Error: Split", 2), -1);
-	if (map_validation(map_info, &unit_info) == -1)
-		return (-1);
-	if (map_find_start(map_info, &unit_info) == -1)
-		return (-1);
-	if (map_find_exit(map_info, &unit_info) == -1)
-		return (-1);
+	if (map_validation(map_info, unit_info) == -1)
+		return (ft_putendl_fd("Error: Validation", 2), -1);
+	if (map_find_start(map_info, unit_info) == -1)
+		return (ft_putendl_fd("Error: start", 2), -1);
+	if (map_find_exit(map_info, unit_info) == -1)
+		return (ft_putendl_fd("Error: exit", 2), -1);
 	return (0);
 }

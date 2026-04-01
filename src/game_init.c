@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 12:21:03 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/01 10:44:05 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/01 12:37:25 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_game(t_game *game)
 	game->exit_x = 0;
 	game->exit_y = 0;
 	game->collect_count = 0;
+	game->move_count = 0;
 }
 
 int		game_load_assets_static(t_game *game)
@@ -74,7 +75,7 @@ int		game_load_assets_obj(t_game *game)
 
 int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info)
 {
-	game->map = map_info->map_str_arr;
+	game->map = map_info->map_str_dup;
 	game->map_width = map_info->x;
 	game->map_height = map_info->y;
 	game->player_x = unit_info->x_player;
@@ -87,6 +88,8 @@ int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info)
 
 int		start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info)
 {
+	
+	map_dup(map_info);
 	init_game(game);
 	game_load_data(game, map_info, unit_info);
 	game->mlx = mlx_init();

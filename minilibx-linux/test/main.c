@@ -192,30 +192,30 @@ int	main()
   mlx_put_image_to_window(mlx,win1,im2,100,100);
   printf("OK\n");
   sleep(2);
-//	// 2nd window
-//  printf(" => 2nd window,");
-//  win2 = mlx_new_window(mlx,WIN1_SX,WIN1_SY,"Title2");
-//  if (!(im4 = mlx_new_image(mlx,IM3_SX, IM3_SY)))
-//    {
-//      printf(" !! KO !!\n");
-//      exit(1);
-//    }
-//  data4 = mlx_get_data_addr(im4,&bpp4,&sl4,&endian4);
-//  color_map_2(data4,bpp4,sl4,IM3_SX,IM3_SY,endian4, 2);
-//	// 3rd window
-//  printf(" 3rd window, Installing hooks ...");
-//  win3 = mlx_new_window(mlx,WIN1_SX,WIN1_SY,"Title3");
-//  mlx_expose_hook(win1,expose_win1,0);
-//  mlx_mouse_hook(win1,mouse_win1,0);
-//  mlx_key_hook(win1,key_win1,0);
-//  mlx_expose_hook(win2,expose_win2,0);
-//  mlx_mouse_hook(win2,mouse_win2,0);
-//  mlx_key_hook(win2,key_win2,0);
-//  mlx_key_hook(win3,key_win3,0);
-//
-//  mlx_hook(win3, MotionNotify, PointerMotionMask, mouse_win3, 0);
-//
-//  printf("OK\nNow in Loop. Just play. Esc in 3 to destroy, 1&2 to quit.\n");
+	// 2nd window
+  printf(" => 2nd window,");
+  win2 = mlx_new_window(mlx,WIN1_SX,WIN1_SY,"Title2");
+  if (!(im4 = mlx_new_image(mlx,IM3_SX, IM3_SY)))
+    {
+      printf(" !! KO !!\n");
+      exit(1);
+    }
+  data4 = mlx_get_data_addr(im4,&bpp4,&sl4,&endian4);
+  color_map_2(data4,bpp4,sl4,IM3_SX,IM3_SY,endian4, 2);
+	// 3rd window
+  printf(" 3rd window, Installing hooks ...");
+  win3 = mlx_new_window(mlx,WIN1_SX,WIN1_SY,"Title3");
+  mlx_expose_hook(win1,expose_win1,0);
+  mlx_mouse_hook(win1,mouse_win1,0);
+  mlx_key_hook(win1,key_win1,0);
+  mlx_expose_hook(win2,expose_win2,0);
+  mlx_mouse_hook(win2,mouse_win2,0);
+  mlx_key_hook(win2,key_win2,0);
+  mlx_key_hook(win3,key_win3,0);
+
+  mlx_hook(win3, MotionNotify, PointerMotionMask, mouse_win3, 0);
+
+  printf("OK\nNow in Loop. Just play. Esc in 3 to destroy, 1&2 to quit.\n");
   
   mlx_loop(mlx);
 }

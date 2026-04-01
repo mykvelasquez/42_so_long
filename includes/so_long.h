@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:32:05 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/01 10:25:52 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/01 12:37:07 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,16 @@ typedef struct s_game
 	int			exit_x;
 	int			exit_y;
 	int			collect_count;
+	int			move_count;
 }				t_game;
 
-int		start_so_long(int argc, char **argv, t_map *map_info, t_unit unit_info);
+int		start_so_long(int argc, char **argv, t_map *map_info, t_unit *unit_info);
 void	init_so_long(t_map *map_info, t_unit *unit_info);
 void	map_free(t_map *map_info);
 char	*map_error_str(int error);
 void	map_print(char **map);
 void	map_get_dimension(t_map *map_info);
-int		map_create(t_map *map_info, t_unit unit_info, char **argv);
+int		map_create(t_map *map_info, t_unit *unit_info, char **argv);
 int		map_validation(t_map *map_info, t_unit *unit_info);
 int		map_check_rectangle(t_map *map_info);
 int		map_check_chars(char **map_arr, t_unit *unit_info);
@@ -108,7 +109,7 @@ int		game_load_assets_obj(t_game *game);
 int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info);
 void	game_cleanup(t_game *game);
 int		game_print_key(int key, void *p);
-int		game_key_close_esc(int key, void *p);
+int		game_key_handler(int key, void *p);
 int		game_key_close_x(void *p);
 void	game_render_map(t_game *game);
 int		main(int argc, char **argv);

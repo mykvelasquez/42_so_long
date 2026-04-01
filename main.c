@@ -6,13 +6,11 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 11:47:02 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/01 10:44:05 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/01 12:50:42 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
 
 
 void	game_render_map(t_game *game)
@@ -34,7 +32,7 @@ void	game_render_map(t_game *game)
 			else if (game->map[y][x] == 'C')
 				mlx_put_image_to_window(game->mlx, game->win,
 					game->assets.collect.img, x * TILE_SIZE, y * TILE_SIZE);
-			else if (game->map[y][x] == 'M')
+			else if (game->map[y][x] == 'X')
 				mlx_put_image_to_window(game->mlx, game->win,
 					game->assets.enemy.img, x * TILE_SIZE, y * TILE_SIZE);
 			if (x == game->exit_x && y == game->exit_y)
@@ -55,14 +53,15 @@ int	main(int argc, char **argv)
 	t_unit	unit_info;
 	t_game	game;
 	// Initialize map structure
-	if (start_so_long(argc, argv, &map_info, unit_info) == -1)
+	if (start_so_long(argc, argv, &map_info, &unit_info) == -1)
 		return (1);
 	// Initialize game structure
 	if (start_game_so_long(&game, &map_info, &unit_info) == -1)
 		return (1);
 	
 	game_render_map(&game);
-	mlx_hook(game.win, 2, 1L << 0, game_key_close_esc, &game);
+
+	mlx_hook(game.win, 2, 1L << 0, game_key_handler, &game);
 	mlx_hook(game.win, 17, 0, game_key_close_x, &game);
 	mlx_loop(game.mlx);
 	return (0);
