@@ -12,19 +12,17 @@
 
 #include "so_long.h"
 
-int	game_print_key(int key, void *p)
-{
-	(void)p;
-	return (printf("Key %c : %d\n",key, key));
-}
+//int	game_print_key(int key, void *p)
+//{
+//	(void)p;
+//	return (printf("Key %c : %d\n",key, key));
+//}
 
 int	game_key_handler(int key, void *p)
 {
 	t_game	*game;
 
 	game = (t_game *)p;
-	printf("key : %d\n", key);
-	printf("Player position: (%d, %d)\n", game->player_x, game->player_y);
 	if (key == 65307)
 		game_exit(game);
 	game_handle_move_key(key, game);
