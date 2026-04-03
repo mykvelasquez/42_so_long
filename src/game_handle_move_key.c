@@ -52,6 +52,7 @@ static void	game_move_player(t_game *game, int dy, int dx)
 	game_check_tile(game, new_y, new_x);
 	game->move_count += 1;
 	game_render_map(game);
+	game_print_move(game);
 }
 
 int	game_handle_move_key(int key, t_game *game)
