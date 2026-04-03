@@ -13,7 +13,7 @@
 #include "so_long.h"
 
 
-void	map_get_dimension(t_map *map_info)
+static void	map_get_dimension(t_map *map_info)
 {
 	map_info->x = 0;
 	map_info->y = 0;
@@ -24,7 +24,7 @@ void	map_get_dimension(t_map *map_info)
 }
 
 
-int		map_check_rectangle(t_map *map_info)
+static int		map_check_rectangle(t_map *map_info)
 {
 	int		i;
 
@@ -39,7 +39,7 @@ int		map_check_rectangle(t_map *map_info)
 	return (0);
 }
 
-int		map_check_req_char(char **map_arr, t_unit *unit_info, char c)
+static int		map_check_req_char(char **map_arr, t_unit *unit_info, char c)
 {
 	int		i;
 	int		j;
@@ -67,7 +67,7 @@ int		map_check_req_char(char **map_arr, t_unit *unit_info, char c)
 	return (0);
 }
 
-int		map_check_chars(char **map_arr, t_unit *unit_info)
+static int		map_check_chars(char **map_arr, t_unit *unit_info)
 {
 	int		i;
 	int		j;
