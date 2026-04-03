@@ -103,6 +103,7 @@ int		game_load_assets_obj(t_game *game);
 int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info);
 void	game_cleanup(t_game *game);
 int		game_print_key(int key, void *p);
+int		game_handle_move_key(int key, t_game *game)
 int		game_key_handler(int key, void *p);
 int		game_key_close_x(void *p);
 void	game_render_map(t_game *game);

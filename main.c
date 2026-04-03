@@ -54,10 +54,10 @@ int	main(int argc, char **argv)
 	t_game	game;
 	// Initialize map structure
 	if (start_so_long(argc, argv, &map_info, &unit_info) == -1)
-		return (1);
+		return (map_free(&map_info), 1);
 	// Initialize game structure
 	if (start_game_so_long(&game, &map_info, &unit_info) == -1)
-		return (1);
+		return (game_cleanup(&game), map_free(&map_info), 1);
 	game_render_map(&game);
 	mlx_hook(game.win, 2, 1L << 0, game_key_handler, &game);
 	mlx_hook(game.win, 17, 0, game_key_close_x, &game);
