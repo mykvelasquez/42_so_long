@@ -92,11 +92,9 @@ void	map_free(t_map *map_info);
 char	*map_error_str(int error);
 void	map_print(char **map);
 int		map_create(t_map *map_info, t_unit *unit_info, char **argv);
-int		map_validation(t_map *map_info, t_unit *unit_info);
-int		map_check_enclosure(t_map *map_info, char c);
-int		map_check_end_new_line(t_map *map_info);
-int		map_check_file_format(char **argv);
-int		map_check_find_path(t_map *map_info, t_unit *unit_info);
+int		map_validation(char **argv, t_map *map_info, t_unit *unit_info)
+int		map_validate_format(char **argv, t_map map_info)
+int		map_validate_path(t_map *map_info, t_unit *unit_info);
 int		map_dup(t_map *map_info);
 int		start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info);
 void	init_game(t_game *game);

@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	map_check_enclosure(t_map *map_info, char c)
+static int	map_check_enclosure(t_map *map_info, char c)
 {
 	int		i;
 	int		j;
@@ -36,7 +36,7 @@ int	map_check_enclosure(t_map *map_info, char c)
 	return (0);
 }
 
-int	map_check_end_new_line(t_map *map_info)
+static int	map_check_end_new_line(t_map *map_info)
 {
 	char	*str;
 	char	*last;
@@ -61,7 +61,7 @@ int	map_check_end_new_line(t_map *map_info)
 	return (0);
 }
 
-int	map_check_file_format(char **argv)
+static int	map_check_file_format(char **argv)
 {
 	char	*filetype;
 	char	*filename;
@@ -80,4 +80,15 @@ int	map_check_file_format(char **argv)
 		return (-1);
 	else
 		return (0);
+}
+
+int		map_validate_format(char **argv, t_map map_info)
+{
+	if (map_check_enclosure(map_info, unit_info->wall) == -1)
+		return (ft_putendl_fd(map_error_str(2), 2), -1);
+	if (map_check_end_new_line(map_info) == -1)
+		return (ft_putendl_fd(map_error_str(4), 2), -1);
+	if (map_check_file_format(argv) == -1)
+		return (ft_putendl_fd(map_error_str(5), 2), -1)
+	return (0);
 }

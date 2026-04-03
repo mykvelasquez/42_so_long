@@ -93,7 +93,7 @@ static int	map_has_char(char **map_dup, char c)
 	return (0);
 }
 
-int map_check_find_path(t_map *map_info, t_unit *unit_info)
+int map_validate_path(t_map *map_info, t_unit *unit_info)
 {
 	char **m_dup;
 
