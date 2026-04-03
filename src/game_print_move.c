@@ -1,0 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_print_move.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/31 13:29:40 by mvelasqu          #+#    #+#             */
+/*   Updated: 2026/04/01 12:58:42 by mvelasqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+static char *move_count_str(int move_count)
+{
+	char *str;
+	char *move_str;
+
+	move_str = ft_itoa(move_count);
+	str = ft_strjoin("Moves: ", move_str);
+	free(move_str);
+	return (str);
+}
+
+void game_print_move(t_game *game)
+{
+    mlx_string_put(game->mlx, game->win, (game->map_height - 2)*TILE_SIZE,
+        (game->map_width)*TILE_SIZE - 10, 0xFF99FF, move_count_str(game->move_count););
+}

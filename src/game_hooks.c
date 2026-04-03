@@ -18,26 +18,13 @@ int	game_print_key(int key, void *p)
 	return (printf("Key %c : %d\n",key, key));
 }
 
-char *move_count_str(int move_count)
-{
-	char *str;
-	char *move_str;
-
-	move_str = ft_itoa(move_count);
-	str = ft_strjoin("Moves: ", move_str);
-	free(move_str);
-	return (str);
-}
-
 int	game_key_handler(int key, void *p)
 {
 	t_game *game;
-	char *moves;
 
 	game = (t_game *)p;
 	printf("key : %d\n", key);
 	printf("Player position: (%d, %d)\n", game->player_x, game->player_y);
-	moves = move_count_str(game->move_count);
 	if (key == 65307)
 	{
 		mlx_destroy_window(game->mlx, game->win);
@@ -130,7 +117,7 @@ int	game_key_handler(int key, void *p)
 	game->move_count += 1;
 
 	game_render_map(game);
-	mlx_string_put(game->mlx, game->win, (game->map_height - 2)*TILE_SIZE, (game->map_width)*TILE_SIZE - 10, 0xFF99FF, moves);
+	
 	return (0);
 }
 
