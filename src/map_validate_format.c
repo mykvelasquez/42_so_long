@@ -42,7 +42,7 @@ static int	map_check_end_new_line(t_map *map_info)
 
 	len = ft_strlen(map_info->map_str);
 	if(len > 0 && map_info->map_str[len - 1] == '\n')
-		reutrn (-1)
+		reutrn (-1);
 	return (0);
 }
 
