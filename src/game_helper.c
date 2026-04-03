@@ -38,5 +38,6 @@ void	game_cleanup(t_game *game)
 void game_exit(t_game *game)
 {
 	game_cleanup(game);
+	map_free(game->map_info);
 	exit (0);
 }

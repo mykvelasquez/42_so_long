@@ -74,7 +74,6 @@ typedef struct s_game
 {
 	void		*win;
 	void		*mlx;
-	t_assets	assets;
 	char		**map;
 	int			map_width;
 	int			map_height;
@@ -84,6 +83,8 @@ typedef struct s_game
 	int			exit_y;
 	int			collect_count;
 	int			move_count;
+	t_assets	assets;
+	t_map		*map_info;
 }				t_game;
 
 int		start_so_long(int argc, char **argv, t_map *map_info, t_unit *unit_info);

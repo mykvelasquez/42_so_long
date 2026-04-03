@@ -78,6 +78,7 @@ int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info)
 	game->map = map_info->map_str_arr;
 	game->map_width = map_info->x;
 	game->map_height = map_info->y;
+	game->map_info = map_info;
 	game->player_x = unit_info->x_player;
 	game->player_y = unit_info->y_player;
 	game->exit_x = unit_info->x_exit;
