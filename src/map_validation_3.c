@@ -45,7 +45,7 @@ static int find_exit(t_map *map_info, t_unit *unit_info)
 		j = 0;
 		while (j < map_info->x)
 		{
-			if(map_info->map_str_dup[i][j] == unit_info->player)
+			if(map_info->map_str_dup[i][j] == unit_info->exit)
 			{
 				return (0);
 			}
@@ -89,8 +89,5 @@ int map_check_find_path(t_map *map_info, t_unit *unit_info)
 		return (ft_putendl_fd("Error: Exit inaccessible.", 2), -1);
 	if (map_check_req_char(m_dup, unit_info, unit_info->collectible) == 0)
 		return (ft_putendl_fd("Error: Collectible inaccessible.", 2), -1);
-	if (map_check_req_char(m_dup, unit_info, unit_info->space) == 0)
-		return (ft_putendl_fd("Error: Some area not accessible.", 2), -1);
-	else
 	return (0);
 }
