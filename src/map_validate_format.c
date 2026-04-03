@@ -38,26 +38,11 @@ static int	map_check_enclosure(t_map *map_info, char c)
 
 static int	map_check_end_new_line(t_map *map_info)
 {
-	char	*str;
-	char	*last;
 	int		len;
 
-	last = NULL;
-	str = get_next_line(map_info-> fd);
-	while (str)
-	{
-		if (last)
-			free(last);
-		last = str;
-		str = get_next_line(map_info-> fd);
-	}
-	if (last)
-	{
-		len = ft_strlen(last);
-		if (len > 0 && last[len - 1] == '\n')
-			return (-1);
-		free (last);
-	}
+	len = ft_strlen(map_info->map_str);
+	if(len > 0 && map_info->map_str[len - 1] == '\n')
+		reutrn (-1)
 	return (0);
 }
 

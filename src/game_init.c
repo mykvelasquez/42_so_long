@@ -89,19 +89,19 @@ int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info)
 int		start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info)
 {
 	init_game(game);
-	game_load_data(game, map_info, unit_info);
+	game_load_data(game, map_info, unit_info)
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		return (-1);
+		return (game_cleanup(game), -1);
 	game->win = mlx_new_window(game->mlx,
 			game->map_width * TILE_SIZE,
 			game->map_height * TILE_SIZE,
 			"so_long");
 	if (!game->win)
-		return (-1);
+		return (game_cleanup(game), -1);
 	if (game_load_assets_obj(game) == -1)
-		return (-1);
+		return (game_cleanup(game), -1);
 	if (game_load_assets_static(game) == -1)
-		return (-1);
+		return (game_cleanup(game), -1);
 	return (0);
 }
