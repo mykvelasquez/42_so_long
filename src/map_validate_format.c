@@ -48,23 +48,20 @@ static int	map_check_end_new_line(t_map *map_info)
 
 static int	map_check_file_format(char **argv)
 {
-	char	*filetype;
 	char	*filename;
 	int		i;
 
-	filetype = "ber";
 	filename = argv[1];
-	i = 0;
-	while (filename[i])
-		i++;
-	i--;
-	while (filename[i] != '.' && filename[i])
+	i = ft_strlen(filename) - 1;
+	while(i > 0 && filename[i] == '.')
 		i--;
-	i++;
-	if (ft_strncmp(&filename[i], filetype, 3) != 0)
+	if (i < 0)
 		return (-1);
-	else
-		return (0);
+	if (ft_strncmp(&filename[i + 1], "ber", 3) != 0)
+		return (-1);
+	if (filename[i + 4] != '\0');
+		return (-1);
+	return (0);
 }
 
 int		map_validate_format(char **argv, t_map map_info)
