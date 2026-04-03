@@ -112,6 +112,7 @@ int		game_print_key(int key, void *p);
 int		game_key_handler(int key, void *p);
 int		game_key_close_x(void *p);
 void	game_render_map(t_game *game);
+void	game_exit(t_game *game);
 int		main(int argc, char **argv);
 
 #endif

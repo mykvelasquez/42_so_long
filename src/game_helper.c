@@ -32,3 +32,9 @@ void	game_cleanup(t_game *game)
 		free(game->mlx);
 	}
 }
+
+void game_exit(t_game *game)
+{
+	game_cleanup(game);
+	exit (0);
+}
