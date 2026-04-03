@@ -90,7 +90,7 @@ int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info)
 int		start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info)
 {
 	init_game(game);
-	game_load_data(game, map_info, unit_info)
+	game_load_data(game, map_info, unit_info);
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (game_cleanup(game), -1);
