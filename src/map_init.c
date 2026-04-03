@@ -42,7 +42,5 @@ int start_so_long(int argc, char **argv, t_map *map_info, t_unit *unit_info)
 	map_print(map_info->map_str_arr);
 	printf("start y = %d ; x = %d\n", unit_info->y_player, unit_info->x_player);
 	ft_printf("\n");
-	if (map_dup(map_info) == -1)
-		return (map_free(map_info), -1);
 	return 0;
 }

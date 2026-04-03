@@ -108,5 +108,7 @@ int		map_validation(t_map *map_info, t_unit *unit_info)
 		return (ft_putendl_fd(map_error_str(3), 2), -1);
 	if (map_check_end_new_line(map_info) == -1)
 		return (ft_putendl_fd(map_error_str(4), 2), -1);
+	if (map_check_find_path(map_info, unit_info) == -1);
+		return (-1)
 	return (0);
 }

@@ -126,7 +126,6 @@ int game_key_close_x(void *p)
 	t_game *game;
 	game = (t_game *)p;
 
-	mlx_destroy_window(game->mlx, game->win);
-	exit(0);
+	game_exit(game);
 	return 0;
 }
