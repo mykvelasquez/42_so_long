@@ -28,6 +28,7 @@ static int	map_dup_init(t_map *map_info)
 			while (i > 0)
 				free(map_info->map_str_dup[--i]);
 			free(map_info->map_str_dup);
+			map_info->map_str_dup = NULL;
 			return (-1);
 		}
 		i++;
@@ -38,12 +39,19 @@ static int	map_dup_init(t_map *map_info)
 
 int	map_dup(t_map *map_info)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
-	i = 0;
+	if (!map_info || !map_info->map_str_arr)
+		return (-1);
+	if (map_info->map_str_dup)
+	{
+		ft_free_split(map_info->map_str_dup);
+		map_info->map_str_dup = NULL;
+	}
 	if (map_dup_init(map_info) == -1)
 		return (-1);
+	i = 0;
 	while (i < map_info->y)
 	{
 		j = 0;

@@ -21,12 +21,12 @@ void	map_free(t_map *map_info)
 		free(map_info->map_str);
 		map_info->map_str = NULL;
 	}
-	if (map_info->map_str_arr != NULL)
+	if (map_info->map_str_arr)
 	{
 		ft_free_split(map_info->map_str_arr);
 		map_info->map_str_arr = NULL;
 	}
-	if (map_info->map_str_dup != NULL)
+	if (map_info->map_str_dup)
 	{
 		ft_free_split(map_info->map_str_dup);
 		map_info->map_str_dup = NULL;
