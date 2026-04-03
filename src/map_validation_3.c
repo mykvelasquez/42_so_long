@@ -62,6 +62,8 @@ static void flood_fill(t_map *map_info, t_unit unit_info, int y, int x)
 		return ;
 	if(map_info->map_str_dup[y][x] == 'V')
 		return ;
+	if(map_info->map_str_dup[y][x] == 'X')
+		return ;
 	if(map_info->map_str_dup[y][x] == unit_info.wall)
 		return ;
 	map_info->map_str_dup[y][x] = 'V';
