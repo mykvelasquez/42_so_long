@@ -12,50 +12,6 @@
 
 #include "so_long.h"
 
-static int find_start(t_map *map_info, t_unit *unit_info)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < map_info->y)
-	{
-		j = 0;
-		while (j < map_info->x)
-		{
-			if(map_info->map_str_dup[i][j] == unit_info->player)
-			{
-				return (0);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (-1);
-}
-
-static int find_exit(t_map *map_info, t_unit *unit_info)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < map_info->y)
-	{
-		j = 0;
-		while (j < map_info->x)
-		{
-			if(map_info->map_str_dup[i][j] == unit_info->exit)
-			{
-				return (0);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (-1);
-}
-
 static void flood_fill(t_map *map_info, t_unit unit_info, int y, int x)
 {
 	if(y < 0 || y >= map_info->y || x < 0 || x >= map_info->x)
@@ -98,10 +54,6 @@ int map_validate_path(t_map *map_info, t_unit *unit_info)
 	char **m_dup;
 
 	if (map_dup(map_info) == -1)
-		return (-1);
-	if (find_start(map_info, unit_info) == -1)
-		return (-1);
-	if (find_exit(map_info, unit_info) == -1)
 		return (-1);
 	m_dup = map_info->map_str_dup;
 	flood_fill(map_info, *unit_info, unit_info->y_player, unit_info->x_player);

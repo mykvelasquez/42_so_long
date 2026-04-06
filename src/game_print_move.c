@@ -26,7 +26,7 @@ void game_print_move(t_game *game)
 	char	*moves;
 
 	moves = move_count_str(game->move_count);
-    mlx_string_put(game->mlx, game->win, (game->map_height - 2)*TILE_SIZE,
-        (game->map_width)*TILE_SIZE - 10, 0xFF99FF, moves);
+    mlx_string_put(game->mlx, game->win, (game->map_width - 2)*TILE_SIZE,
+        (game->map_height)*TILE_SIZE - 10, 0xFF99FF, moves);
 	free(moves);
 }

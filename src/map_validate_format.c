@@ -64,7 +64,7 @@ static int	map_check_file_format(char **argv)
 	return (0);
 }
 
-int		map_validate_format(char **argv, t_map map_info)
+int		map_validate_format(char **argv, t_map *map_info)
 {
 	if (map_check_enclosure(map_info, '1') == -1)
 		return (ft_putendl_fd(map_error_str(2), 2), -1);
