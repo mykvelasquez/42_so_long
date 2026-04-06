@@ -33,10 +33,10 @@ void	game_render_map(t_game *game)
 			{
 				if (game->anim_frame == 0)
 					mlx_put_image_to_window(game->mlx, game->win,
-						gmae->assets.collect_1.img, x * TILE_SIZE, y * TILE_SIZE);
+						game->assets.collect_1.img, x * TILE_SIZE, y * TILE_SIZE);
 				else
 					mlx_put_image_to_window(game->mlx, game->win,
-						gmae->assets.collect_2.img, x * TILE_SIZE, y * TILE_SIZE);
+						game->assets.collect_2.img, x * TILE_SIZE, y * TILE_SIZE);
 			}
 			else if (game->map[y][x] == 'X')
 				mlx_put_image_to_window(game->mlx, game->win,
