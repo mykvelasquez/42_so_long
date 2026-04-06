@@ -19,7 +19,8 @@ void	init_game(t_game *game)
 	game->assets.player.img = NULL;
 	game->assets.wall.img = NULL;
 	game->assets.space.img = NULL;
-	game->assets.collect.img = NULL;
+	game->assets.collect_1.img = NULL;
+	game->assets.collect_2.img = NULL;
 	game->assets.exit.img = NULL;
 	game->assets.enemy.img = NULL;
 	game->map = NULL;
@@ -55,17 +56,22 @@ int		game_load_assets_static(t_game *game)
 
 int		game_load_assets_obj(t_game *game)
 {
-	game->assets.collect.img = mlx_xpm_file_to_image(
+	game->assets.collect_1.img = mlx_xpm_file_to_image(
 		game->mlx, "assets/chest.xpm",
-		&game->assets.collect.width, &game->assets.collect.height);
+		&game->assets.collect_1.width, &game->assets.collect_1.height);
+	game->assets.collect_2.img = mlx_xpm_file_to_image(
+		game->mlx, "assets/chest.xpm",
+		&game->assets.collect_2.width, &game->assets.collect_2.height);
 	game->assets.player.img = mlx_xpm_file_to_image(
 		game->mlx, "assets/player.xpm",
 		&game->assets.player.width, &game->assets.player.height);
 	game->assets.enemy.img = mlx_xpm_file_to_image(
 		game->mlx, "assets/enemy.xpm",
 		&game->assets.enemy.width, &game->assets.enemy.height);
-	if (!game->assets.collect.img)
-		return (ft_putendl_fd("Failed to load asset: collect", 2), -1);
+	if (!game->assets.collect_1.img)
+		return (ft_putendl_fd("Failed to load asset: collect 1", 2), -1);
+	if (!game->assets.collect_2.img)
+		return (ft_putendl_fd("Failed to load asset: collect 2", 2), -1);
 	if (!game->assets.player.img)
 		return (ft_putendl_fd("Failed to load asset: player", 2), -1);
 	if (!game->assets.enemy.img)

@@ -65,7 +65,8 @@ typedef struct s_assets
 	t_img	player;
 	t_img	wall;
 	t_img	space;
-	t_img	collect;
+	t_img	collect_1;
+	t_img	collect_2;
 	t_img	exit;
 	t_img	enemy;
 }			t_assets;

@@ -22,8 +22,10 @@ void	game_cleanup(t_game *game)
 		mlx_destroy_image(game->mlx, game->assets.space.img);
 	if (game->assets.exit.img)
 		mlx_destroy_image(game->mlx, game->assets.exit.img);
-	if (game->assets.collect.img)
-		mlx_destroy_image(game->mlx,game->assets.collect.img);
+	if (game->assets.collect_1.img)
+		mlx_destroy_image(game->mlx,game->assets.collect_1.img);
+	if (game->assets.collect_2.img)
+		mlx_destroy_image(game->mlx,game->assets.collect_2.img);
 	if (game->assets.enemy.img)
 		mlx_destroy_image(game->mlx,game->assets.enemy.img);
 	if (game->win)
