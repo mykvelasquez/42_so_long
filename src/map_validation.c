@@ -104,9 +104,9 @@ int		map_validation(char **argv, t_map *map_info, t_unit *unit_info)
 		return (ft_putendl_fd(map_error_str(1), 2), -1);
 	if (map_check_chars(map_info->map_str_arr, unit_info) == -1)
 		return (ft_putendl_fd(map_error_str(3), 2), -1);
-	if (map_validate_forma(argv, map_info) == -1)
+	if (map_validate_format(argv, map_info) == -1)
 		return (ft_putendl_fd(map_error_str(3), 2), -1);
-	if (map_validate_path(map_info, unit_info) == -1);
-		return (-1)
+	if (map_validate_path(map_info, unit_info) == -1)
+		return (-1);
 	return (0);
 }

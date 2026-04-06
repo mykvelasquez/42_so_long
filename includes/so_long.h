@@ -99,8 +99,8 @@ void	map_free(t_map *map_info);
 char	*map_error_str(int error);
 void	map_print(char **map);
 int		map_create(t_map *map_info, t_unit *unit_info, char **argv);
-int		map_validation(char **argv, t_map *map_info, t_unit *unit_info)
-int		map_validate_format(char **argv, t_map map_info)
+int		map_validation(char **argv, t_map *map_info, t_unit *unit_info);
+int		map_validate_format(char **argv, t_map *map_info);
 int		map_validate_path(t_map *map_info, t_unit *unit_info);
 int		map_dup(t_map *map_info);
 int		start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info);
@@ -110,12 +110,12 @@ int		game_load_assets_obj(t_game *game);
 int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info);
 void	game_cleanup(t_game *game);
 int		game_print_key(int key, void *p);
-int		game_handle_move_key(int key, t_game *game)
+int		game_handle_move_key(int key, t_game *game);
 int		game_key_handler(int key, void *p);
 int		game_key_close_x(void *p);
 int		game_animate(void *p);
 void	game_init_enemy(t_game *game);
-void    game_move_enemy(t_game *game)
+void    game_move_enemy(t_game *game);
 void	game_render_map(t_game *game);
 void	game_print_move(t_game *game);
 void	game_exit(t_game *game);
