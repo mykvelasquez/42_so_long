@@ -50,6 +50,7 @@ static void	game_move_player(t_game *game, int dy, int dx)
 	game->player_y = new_y;
 	game->player_x = new_x;
 	game_check_tile(game, new_y, new_x);
+	game_move_enemy(game);
 	game->move_count += 1;
 	game_render_map(game);
 	game_print_move(game);
