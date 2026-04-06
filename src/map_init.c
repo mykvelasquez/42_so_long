@@ -39,8 +39,5 @@ int start_so_long(int argc, char **argv, t_map *map_info, t_unit *unit_info)
 	init_so_long(map_info, unit_info);
 	if (map_create(map_info, unit_info, argv) == -1)
 		return (map_free(map_info), -1);
-	map_print(map_info->map_str_arr);
-	printf("start y = %d ; x = %d\n", unit_info->y_player, unit_info->x_player);
-	ft_printf("\n");
 	return 0;
 }

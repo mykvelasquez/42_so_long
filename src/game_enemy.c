@@ -44,7 +44,6 @@ void    game_move_enemy(t_game *game)
     next_x = game->enemy_x + game->enemy_dir;
     if (next_x < 0 || next_x >=game->map_width
         || game->map[game->enemy_y][next_x] == '1')
-        return ;
     {
         game->enemy_dir *= -1;
         next_x = game->enemy_x + game->enemy_dir;
