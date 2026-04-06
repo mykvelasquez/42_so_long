@@ -59,10 +59,10 @@ int		game_load_assets_static(t_game *game)
 int		game_load_assets_obj(t_game *game)
 {
 	game->assets.collect_1.img = mlx_xpm_file_to_image(
-		game->mlx, "assets/chest.xpm",
+		game->mlx, "assets/coin_1.xpm",
 		&game->assets.collect_1.width, &game->assets.collect_1.height);
 	game->assets.collect_2.img = mlx_xpm_file_to_image(
-		game->mlx, "assets/chest.xpm",
+		game->mlx, "assets/coin_2.xpm",
 		&game->assets.collect_2.width, &game->assets.collect_2.height);
 	game->assets.player.img = mlx_xpm_file_to_image(
 		game->mlx, "assets/player.xpm",

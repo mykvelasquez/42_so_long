@@ -66,6 +66,7 @@ int	main(int argc, char **argv)
 	game_render_map(&game);
 	mlx_hook(game.win, 2, 1L << 0, game_key_handler, &game);
 	mlx_hook(game.win, 17, 0, game_key_close_x, &game);
+	mlx_loop_hook(game.mlx, game_animate, &game);
 	mlx_loop(game.mlx);
 	game_exit(&game);
 	return (0);

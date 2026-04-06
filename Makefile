@@ -38,7 +38,8 @@ SRCS		= main.c \
 				src/map_validation_3.c \
 				src/game_helper.c \
 				src/game_hooks.c \
-				src/game_init.c
+				src/game_init.c \
+				src/game_animate.c
 OBJS		= $(SRCS:.c=.o)
 
 #Commands
