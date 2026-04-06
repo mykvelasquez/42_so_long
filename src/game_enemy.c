@@ -34,3 +34,27 @@ void	game_init_enemy(t_game *game)
 		y++;
 	}
 }
+
+void    game_move_enemy(t_game *game)
+{
+    int     next_x;
+    
+    if (game->enemy_x < 0 || game->enemy_y < 0)
+        return ;
+    next_x = game->enemy_x + game->enemy_dir;
+    if (next_x < 0 || next_x >=game->map_width
+        || game->map[game->enemy_y][next_x] == '1')
+        return ;
+    {
+        game->enemy_dir *= -1;
+        next_x = game->enemy_x + game->enemy_dir;
+        if(next_x < 0 || next_x >= game->map_width
+            || game->map[game->enemy_y][next_x] == '1')
+            return ;
+    }
+    if (game->player_x == next_x && game->player_y == game->enemy_y)
+        game_exit(game);
+    game->map[game->enemy_y][game->enemy_x] = '0';
+    game->enemy_x = next_x;
+    game->map[game->enemy_y][game->enemy_x] = 'X';
+}

@@ -114,6 +114,8 @@ int		game_handle_move_key(int key, t_game *game)
 int		game_key_handler(int key, void *p);
 int		game_key_close_x(void *p);
 int		game_animate(void *p);
+void	game_init_enemy(t_game *game);
+void    game_move_enemy(t_game *game)
 void	game_render_map(t_game *game);
 void	game_print_move(t_game *game);
 void	game_exit(t_game *game);

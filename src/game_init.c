@@ -115,5 +115,6 @@ int		start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info)
 		return (game_cleanup(game), -1);
 	if (game_load_assets_static(game) == -1)
 		return (game_cleanup(game), -1);
+	game_init_enemy(game);
 	return (0);
 }
