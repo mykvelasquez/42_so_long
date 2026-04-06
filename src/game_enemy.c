@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:32:05 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/01 12:37:07 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/06 13:13:57 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,17 @@ void    game_move_enemy(t_game *game)
     if (game->enemy_x < 0 || game->enemy_y < 0)
         return ;
     next_x = game->enemy_x + game->enemy_dir;
-    if (next_x < 0 || next_x >=game->map_width
-        || game->map[game->enemy_y][next_x] == '1')
+    if (next_x < 0 || next_x >= game->map_width
+        || game->map[game->enemy_y][next_x] == '1'
+		|| game->map[game->enemy_y][next_x] == 'C'
+		|| game->map[game->enemy_y][next_x] == 'E')
     {
         game->enemy_dir *= -1;
         next_x = game->enemy_x + game->enemy_dir;
-        if(next_x < 0 || next_x >= game->map_width
-            || game->map[game->enemy_y][next_x] == '1')
+        if (next_x < 0 || next_x >= game->map_width
+            || game->map[game->enemy_y][next_x] == '1'
+			|| game->map[game->enemy_y][next_x] == 'C'
+			|| game->map[game->enemy_y][next_x] == 'E')
             return ;
     }
     if (game->player_x == next_x && game->player_y == game->enemy_y)

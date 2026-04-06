@@ -161,3 +161,8 @@ Graphics library that allows you to render something in screen. its a 42 library
 
 3. step3: to print image in the window.
 - you need to convert image (jpg,png, etc.) to xpm file. 
+
+
+## NOTES
+
+int	mlx_hook(t_win_list *win, int x_event, int x_mask, int (*funct)(),void *param), returns -1 when failed. 

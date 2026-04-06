@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:32:05 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/01 12:37:07 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/06 13:20:42 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int game_animate(void *p)
     game = (t_game *)p;
 
     game->anim_count++;
-    if (game->anim_count >= 8000)
+    if (game->anim_count >= 30000)
     {
         game->anim_count = 0;
         if (game->anim_frame == 0)

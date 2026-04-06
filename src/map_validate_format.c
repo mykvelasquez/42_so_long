@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validation_2.c                                 :+:      :+:    :+:   */
+/*   map_validate_format.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:09:39 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/24 10:54:44 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/06 12:53:23 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ static int	map_check_end_new_line(t_map *map_info)
 	return (0);
 }
 
-static int	map_check_file_format(char **argv)
+int	map_check_file_format(char **argv)
 {
 	char	*filename;
 	int		i;
 
 	filename = argv[1];
 	i = ft_strlen(filename) - 1;
-	while(i > 0 && filename[i] == '.')
+	while(i > 0 && filename[i] != '.')
 		i--;
 	if (i < 0)
 		return (-1);
@@ -64,13 +64,11 @@ static int	map_check_file_format(char **argv)
 	return (0);
 }
 
-int		map_validate_format(char **argv, t_map *map_info)
+int		map_validate_format(t_map *map_info)
 {
 	if (map_check_enclosure(map_info, '1') == -1)
 		return (ft_putendl_fd(map_error_str(2), 2), -1);
 	if (map_check_end_new_line(map_info) == -1)
 		return (ft_putendl_fd(map_error_str(4), 2), -1);
-	if (map_check_file_format(argv) == -1)
-		return (ft_putendl_fd(map_error_str(5), 2), -1)
 	return (0);
 }

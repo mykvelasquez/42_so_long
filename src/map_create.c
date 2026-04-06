@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:47:19 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/01 11:30:21 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/06 13:32:08 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int map_find_start(t_map *map_info, t_unit *unit_info)
 		j = 0;
 		while (j < map_info->x)
 		{
-			if(map_info->map_str_arr[i][j] == unit_info->player)
+			if (map_info->map_str_arr[i][j] == unit_info->player)
 			{
 				unit_info->y_player = i;
 				unit_info->x_player = j;
@@ -113,5 +113,7 @@ int	map_create(t_map *map_info, t_unit *unit_info, char **argv)
 		return (ft_putendl_fd("Error: start", 2), -1);
 	if (map_find_exit(map_info, unit_info) == -1)
 		return (ft_putendl_fd("Error: exit", 2), -1);
+	if (map_validate_path(map_info, unit_info) == -1)
+		return (-1);
 	return (0);
 }

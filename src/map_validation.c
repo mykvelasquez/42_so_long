@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validation_1.c                                 :+:      :+:    :+:   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:06:36 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/03/31 14:28:48 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/06 13:11:32 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 static void	map_get_dimension(t_map *map_info)
 {
@@ -96,7 +95,7 @@ static int		map_check_chars(char **map_arr, t_unit *unit_info)
 	return (0);
 }
 
-int		map_validation(char **argv, t_map *map_info, t_unit *unit_info)
+int		map_validation(t_map *map_info, t_unit *unit_info)
 {
 	if (!map_info->map_str_arr || !map_info->map_str_arr[0])
 		return (-1);
@@ -104,9 +103,7 @@ int		map_validation(char **argv, t_map *map_info, t_unit *unit_info)
 		return (ft_putendl_fd(map_error_str(1), 2), -1);
 	if (map_check_chars(map_info->map_str_arr, unit_info) == -1)
 		return (ft_putendl_fd(map_error_str(3), 2), -1);
-	if (map_validate_format(argv, map_info) == -1)
-		return (ft_putendl_fd(map_error_str(3), 2), -1);
-	if (map_validate_path(map_info, unit_info) == -1)
+	if (map_validate_format(map_info) == -1)
 		return (-1);
 	return (0);
 }

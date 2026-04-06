@@ -6,9 +6,11 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:29:40 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/01 12:58:42 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/06 12:36:56 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "so_long.h"
 
 static char *move_count_str(int move_count)
 {

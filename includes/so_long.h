@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:32:05 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/01 12:37:07 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/06 12:46:47 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,9 @@ void	map_free(t_map *map_info);
 char	*map_error_str(int error);
 void	map_print(char **map);
 int		map_create(t_map *map_info, t_unit *unit_info, char **argv);
-int		map_validation(char **argv, t_map *map_info, t_unit *unit_info);
-int		map_validate_format(char **argv, t_map *map_info);
+int		map_validation(t_map *map_info, t_unit *unit_info);
+int		map_check_file_format(char **argv);
+int		map_validate_format(t_map *map_info);
 int		map_validate_path(t_map *map_info, t_unit *unit_info);
 int		map_dup(t_map *map_info);
 int		start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info);
