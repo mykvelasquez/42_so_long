@@ -32,6 +32,8 @@ void	init_game(t_game *game)
 	game->exit_y = 0;
 	game->collect_count = 0;
 	game->move_count = 0;
+	game->anim_frame = 0;
+	game->anim_count = 0;
 }
 
 int		game_load_assets_static(t_game *game)

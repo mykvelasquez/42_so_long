@@ -84,6 +84,8 @@ typedef struct s_game
 	int			exit_y;
 	int			collect_count;
 	int			move_count;
+	int			anim_frame;
+	int			anim_count;
 	t_assets	assets;
 	t_map		*map_info;
 }				t_game;

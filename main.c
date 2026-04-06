@@ -30,8 +30,14 @@ void	game_render_map(t_game *game)
 				mlx_put_image_to_window(game->mlx, game->win,
 					game->assets.wall.img, x * TILE_SIZE, y * TILE_SIZE);
 			else if (game->map[y][x] == 'C')
-				mlx_put_image_to_window(game->mlx, game->win,
-					game->assets.collect.img, x * TILE_SIZE, y * TILE_SIZE);
+			{
+				if (game->anim_frame == 0)
+					mlx_put_image_to_window(game->mlx, game->win,
+						gmae->assets.collect_1.img, x * TILE_SIZE, y * TILE_SIZE);
+				else
+					mlx_put_image_to_window(game->mlx, game->win,
+						gmae->assets.collect_2.img, x * TILE_SIZE, y * TILE_SIZE);
+			}
 			else if (game->map[y][x] == 'X')
 				mlx_put_image_to_window(game->mlx, game->win,
 					game->assets.enemy.img, x * TILE_SIZE, y * TILE_SIZE);
@@ -52,10 +58,9 @@ int	main(int argc, char **argv)
 	t_map	map_info;
 	t_unit	unit_info;
 	t_game	game;
-	// Initialize map structure
+
 	if (start_so_long(argc, argv, &map_info, &unit_info) == -1)
 		return (map_free(&map_info), 1);
-	// Initialize game structure
 	if (start_game_so_long(&game, &map_info, &unit_info) == -1)
 		return (game_cleanup(&game), map_free(&map_info), 1);
 	game_render_map(&game);
