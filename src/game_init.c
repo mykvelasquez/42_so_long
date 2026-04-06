@@ -34,6 +34,9 @@ void	init_game(t_game *game)
 	game->move_count = 0;
 	game->anim_frame = 0;
 	game->anim_count = 0;
+	game->enemy_x = -1;
+	game->enemy_y = -1;
+	game->enemy_dir = 1;
 }
 
 int		game_load_assets_static(t_game *game)
