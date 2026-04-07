@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:29:40 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/07 11:36:26 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:48:09 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void game_print_move(t_game *game)
 
 	moves = move_count_str(game->move_count);
     mlx_string_put(game->mlx, game->win, (game->map_width - 2)*TILE_SIZE,
-        (game->map_height)*TILE_SIZE - 10, 0xFF99FF, moves);
+        (game->map_height)*TILE_SIZE - 10, 0xFFFFFF, moves);
 	free(moves);
 }
