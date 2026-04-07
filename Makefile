@@ -6,14 +6,14 @@
 #    By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/18 12:29:50 by mvelasqu          #+#    #+#              #
-#    Updated: 2026/04/07 12:08:31 by mvelasqu         ###   ########.fr        #
+#    Updated: 2026/04/07 12:12:13 by mvelasqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Description
 
 NAME		= so_long
-NAME_BONUS	= so_long_bonus
+
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 LDFLAGS		= -no-pie
@@ -65,10 +65,8 @@ OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
 #Commands
 all: $(NAME)
 
-bonus: $(NAME_BONUS)
-
-$(NAME_BONUS): $(LIBFLAGS) $(OBJS_BONUS) $(MLXFLAGS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS_BONUS) $(LIBFLAGS) $(MLXFLAGS) $(MLX_LIBS) -o $(NAME_BONUS)
+bonus: $(LIBFLAGS) $(MLXFLAGS) $(OBJS_BONUS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS_BONUS) $(LIBFLAGS) $(MLXFLAGS) $(MLX_LIBS) -o $(NAME)
 
 $(NAME): $(LIBFLAGS) $(OBJS) $(MLXFLAGS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBFLAGS) $(MLXFLAGS) $(MLX_LIBS) -o $(NAME)
@@ -88,7 +86,7 @@ clean:
 	$(MAKE) -C $(MLXDIR) clean
 
 fclean: clean
-	$(RM) $(NAME) $(NAME_BONUS)
+	$(RM) $(NAME)
 	$(MAKE) -C $(LIBDIR) fclean
 
 
