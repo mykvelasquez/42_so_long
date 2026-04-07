@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:46:42 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/06 14:42:00 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:33:39 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ char	*map_error_str(int error)
 		return ("Map has a new line at the end");
 	else if (error == 5)
 		return ("file not in proper format");
+	else if (error == 0)
+		return ("command prompt: ./so_long <map_file.ber>");
 	else
 		return ("error not found");
 }

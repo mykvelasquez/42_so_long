@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 11:47:02 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/01 12:50:42 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:34:08 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	main(int argc, char **argv)
 	t_unit	unit_info;
 	t_game	game;
 
+	if (argc != 2)
+		return (ft_putendl_fd(map_error_str(0), 2), 1);
 	if (start_so_long(argc, argv, &map_info, &unit_info) == -1)
 		return (map_free(&map_info), 1);
 	if (start_game_so_long(&game, &map_info, &unit_info) == -1)
