@@ -3,10 +3,11 @@
 ## Description
 
 ### Project Overview
-This project creates a 2D game using C and other libraries such as math 3 and MiniLibX. Through proper code organization and management this project is divided in three (3) distinct systems:
-- Parsing System
-- Validation System
-- Rendering System
+This project creates a 2D game using C and libraries such as Math and MiniLibX.  
+The implementation is divided into three (3) main systems:
+- Parsing System  
+- Validation System  
+- Rendering System  
 
 ### Project Limits and Edge Cases
 
@@ -71,16 +72,18 @@ Each map was created for differet edge cases, detailed table as seen below:
 
 ## Instructions
 
+### Compile
 To be able to start the game, you have to compile all the files using the command:
-```
+```bash
 make
 ```
 
 To be able to implement the bonus, you have to compile using the command:
-```
+```bash
 make bonus
 ```
 
+### Run
 To run the game you may choose any map inside ```/maps``` folder. The command should be as follows:
 ```bash
 ./so_long maps/<map_file>
@@ -112,7 +115,7 @@ To simplify testing you can copy paste the commands listed below:
 
 ## Resources
 
-AI used for understanding mlx library and support for understanding different functions
-Used itch.io for xpm ideas
-42paris/minilibx-linux - for library and testing
-https://tronche.com/gui/x/xlib/events/ - for understanding linux events and hooks
+- AI tools were used to better understand MiniLibX and related functions
+- Assets inspiration from itch.io
+- MiniLibX repository: https://github.com/42paris/minilibx-linux
+- X11 events reference: https://tronche.com/gui/x/xlib/eve
