@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:29:40 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/07 11:38:38 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:41:13 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ static void	game_move_player(t_game *game, int dy, int dx)
 	game->move_count += 1;
 	game_render_map(game);
 	game_print_move(game);
-	ft_printf("Player position: (%d, %d)\n", game->player_x, game->player_y);
+	ft_printf("Player position: (%d, %d) move count %d.\n", game->player_x,
+		game->player_y, game->move_count);
 }
 
 int	game_handle_move_key(int key, t_game *game)
