@@ -72,6 +72,17 @@ Each map was created for differet edge cases, detailed table as seen below:
 
 ## Instructions
 
+### Requirements
+
+This project is designed to run on **Linux systems only**.
+
+It uses the **MiniLibX (Linux version)** with X11 dependencies:
+- X11 (`-lX11`)
+- Xext (`-lXext`)
+- BSD (`-lbsd`)
+
+⚠️ It will NOT run on macOS without modifying the Makefile and using the macOS version of MiniLibX.
+
 ### Compile
 To be able to start the game, you have to compile all the files using the command:
 ```bash
