@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:47:19 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/06 14:42:04 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/07 12:20:07 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	map_create(t_map *map_info, t_unit *unit_info, char **argv)
 	if (!map_info->map_str_arr)
 		return (ft_putendl_fd("Error: Split", 2), -1);
 	if (map_validation(map_info, unit_info) == -1)
-		return (ft_putendl_fd("Error: Validation", 2), -1);
+		return (-1);
 	if (map_find_start(map_info, unit_info) == -1)
 		return (ft_putendl_fd("Error: start", 2), -1);
 	if (map_find_exit(map_info, unit_info) == -1)

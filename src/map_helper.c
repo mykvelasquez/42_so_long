@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:46:42 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/07 11:33:39 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/07 12:20:46 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ char	*map_error_str(int error)
 	else if (error == 5)
 		return ("file not in proper format");
 	else if (error == 0)
-		return ("command prompt: ./so_long <map_file.ber>");
+		return ("Usage is ./so_long <map_file.ber>");
+	else if (error == 6)
+		return ("Map too big for display");
 	else
 		return ("error not found");
 }

@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:06:36 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/06 14:21:01 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/07 12:17:50 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,9 @@ int		map_validation(t_map *map_info, t_unit *unit_info)
 		return (-1);
 	if (map_check_rectangle(map_info) == -1)
 		return (ft_putendl_fd(map_error_str(1), 2), -1);
+	if ((map_info->x * TILE_SIZE) > MAX_WIDTH
+		|| (map_info->y * TILE_SIZE) > MAX_HEIGHT)
+		return (ft_putendl_fd(map_error_str(6), 2), -1);
 	if (map_check_chars(map_info->map_str_arr, unit_info) == -1)
 		return (ft_putendl_fd(map_error_str(3), 2), -1);
 	if (map_validate_format(map_info) == -1)

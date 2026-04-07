@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:32:05 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/06 12:46:47 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/07 12:15:27 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@
 # include <stdio.h>
 # include <unistd.h>
 
-
-
-
 #define TILE_SIZE 32
+#define MAX_WIDTH 1920
+#define MAX_HEIGHT 1080
 
 typedef struct s_map
 {
