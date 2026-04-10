@@ -6,12 +6,11 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:29:40 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/07 11:56:18 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/10 13:37:00 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 static void	game_collect_item(t_game *game, int y, int x)
 {

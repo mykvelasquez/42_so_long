@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:32:05 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/07 12:15:27 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/10 13:36:26 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 # include <stdio.h>
 # include <unistd.h>
 
-#define TILE_SIZE 32
-#define MAX_WIDTH 1920
-#define MAX_HEIGHT 1080
+# define TILE_SIZE 32
+# define MAX_WIDTH 1920
+# define MAX_HEIGHT 1080
 
 typedef struct s_map
 {
@@ -55,7 +55,7 @@ typedef struct s_unit
 typedef struct s_img
 {
 	void	*img;
-	int 	height;
+	int		height;
 	int		width;
 }			t_img;
 
@@ -92,7 +92,8 @@ typedef struct s_game
 	t_map		*map_info;
 }				t_game;
 
-int		start_so_long(int argc, char **argv, t_map *map_info, t_unit *unit_info);
+int		start_so_long(int argc, char **argv, t_map *map_info,
+			t_unit *unit_info);
 void	init_so_long(t_map *map_info, t_unit *unit_info);
 void	map_free(t_map *map_info);
 char	*map_error_str(int error);
@@ -115,7 +116,7 @@ int		game_key_handler(int key, void *p);
 int		game_key_close_x(void *p);
 int		game_animate(void *p);
 void	game_init_enemy(t_game *game);
-void    game_move_enemy(t_game *game);
+void	game_move_enemy(t_game *game);
 void	game_render_map(t_game *game);
 void	game_print_move(t_game *game);
 void	game_exit(t_game *game);

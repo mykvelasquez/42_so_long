@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:47:19 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/07 12:20:07 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/10 13:19:43 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ static int	map_get_string(t_map *map_info, char **argv)
 	return (0);
 }
 
-static int map_find_start(t_map *map_info, t_unit *unit_info)
+static int	map_find_start(t_map *map_info, t_unit *unit_info)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < map_info->y)
@@ -74,10 +74,10 @@ static int map_find_start(t_map *map_info, t_unit *unit_info)
 	return (-1);
 }
 
-static int map_find_exit(t_map *map_info, t_unit *unit_info)
+static int	map_find_exit(t_map *map_info, t_unit *unit_info)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < map_info->y)
@@ -85,7 +85,7 @@ static int map_find_exit(t_map *map_info, t_unit *unit_info)
 		j = 0;
 		while (j < map_info->x)
 		{
-			if(map_info->map_str_arr[i][j] == unit_info->exit)
+			if (map_info->map_str_arr[i][j] == unit_info->exit)
 			{
 				unit_info->y_exit = i;
 				unit_info->x_exit = j;

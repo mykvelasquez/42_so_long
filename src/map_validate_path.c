@@ -6,21 +6,21 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 12:01:37 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/06 14:21:08 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/10 13:36:50 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void flood_fill(t_map *map_info, t_unit unit_info, int y, int x)
+static void	flood_fill(t_map *map_info, t_unit unit_info, int y, int x)
 {
-	if(y < 0 || y >= map_info->y || x < 0 || x >= map_info->x)
+	if (y < 0 || y >= map_info->y || x < 0 || x >= map_info->x)
 		return ;
-	if(map_info->map_str_dup[y][x] == 'V')
+	if (map_info->map_str_dup[y][x] == 'V')
 		return ;
-	if(map_info->map_str_dup[y][x] == 'X')
+	if (map_info->map_str_dup[y][x] == 'X')
 		return ;
-	if(map_info->map_str_dup[y][x] == unit_info.wall)
+	if (map_info->map_str_dup[y][x] == unit_info.wall)
 		return ;
 	map_info->map_str_dup[y][x] = 'V';
 	flood_fill(map_info, unit_info, y + 1, x);
@@ -32,7 +32,7 @@ static void flood_fill(t_map *map_info, t_unit unit_info, int y, int x)
 static int	map_has_char(char **map_dup, char c)
 {
 	int		i;
-	int 	j;
+	int		j;
 
 	i = 0;
 	while (map_dup[i])
@@ -49,9 +49,9 @@ static int	map_has_char(char **map_dup, char c)
 	return (0);
 }
 
-int map_validate_path(t_map *map_info, t_unit *unit_info)
+int	map_validate_path(t_map *map_info, t_unit *unit_info)
 {
-	char **m_dup;
+	char	**m_dup;
 
 	if (map_dup(map_info) == -1)
 		return (-1);

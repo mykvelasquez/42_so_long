@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:06:36 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/07 12:17:50 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/10 13:36:49 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ static void	map_get_dimension(t_map *map_info)
 		map_info-> x++;
 }
 
-
-static int		map_check_rectangle(t_map *map_info)
+static int	map_check_rectangle(t_map *map_info)
 {
 	int		i;
 
@@ -38,7 +37,7 @@ static int		map_check_rectangle(t_map *map_info)
 	return (0);
 }
 
-static int		map_check_req_char(char **map_arr, t_unit *unit_info, char c)
+static int	map_check_req_char(char **map_arr, t_unit *unit_info, char c)
 {
 	int		i;
 	int		j;
@@ -66,7 +65,7 @@ static int		map_check_req_char(char **map_arr, t_unit *unit_info, char c)
 	return (0);
 }
 
-static int		map_check_chars(char **map_arr, t_unit *unit_info)
+static int	map_check_chars(char **map_arr, t_unit *unit_info)
 {
 	int		i;
 	int		j;
@@ -95,7 +94,7 @@ static int		map_check_chars(char **map_arr, t_unit *unit_info)
 	return (0);
 }
 
-int		map_validation(t_map *map_info, t_unit *unit_info)
+int	map_validation(t_map *map_info, t_unit *unit_info)
 {
 	if (!map_info->map_str_arr || !map_info->map_str_arr[0])
 		return (-1);

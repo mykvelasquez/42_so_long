@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:09:04 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/07 11:44:13 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/10 13:36:58 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ int	game_key_handler(int key, void *p)
 	return (0);
 }
 
-int game_key_close_x(void *p)
+int	game_key_close_x(void *p)
 {
-	t_game *game;
+	t_game	*game;
+
 	game = (t_game *)p;
-
 	game_exit(game);
-	return 0;
+	return (0);
 }
-

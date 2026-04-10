@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:09:04 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/06 14:42:09 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/10 13:36:59 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	game_cleanup(t_game *game)
 	if (game->assets.exit.img)
 		mlx_destroy_image(game->mlx, game->assets.exit.img);
 	if (game->assets.collect_1.img)
-		mlx_destroy_image(game->mlx,game->assets.collect_1.img);
+		mlx_destroy_image(game->mlx, game->assets.collect_1.img);
 	if (game->assets.collect_2.img)
-		mlx_destroy_image(game->mlx,game->assets.collect_2.img);
+		mlx_destroy_image(game->mlx, game->assets.collect_2.img);
 	if (game->assets.enemy.img)
-		mlx_destroy_image(game->mlx,game->assets.enemy.img);
+		mlx_destroy_image(game->mlx, game->assets.enemy.img);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
@@ -37,7 +37,7 @@ void	game_cleanup(t_game *game)
 	}
 }
 
-void game_exit(t_game *game)
+void	game_exit(t_game *game)
 {
 	game_cleanup(game);
 	map_free(game->map_info);

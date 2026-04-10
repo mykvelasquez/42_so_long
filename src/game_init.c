@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 12:21:03 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/06 14:42:07 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/10 13:36:58 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ void	init_game(t_game *game)
 	game->enemy_dir = 1;
 }
 
-int		game_load_assets_static(t_game *game)
+int	game_load_assets_static(t_game *game)
 {
 	game->assets.wall.img = mlx_xpm_file_to_image(
-		game->mlx, "assets/wall.xpm",
-		&game->assets.wall.width, &game->assets.wall.height);
+			game->mlx, "assets/wall.xpm",
+			&game->assets.wall.width, &game->assets.wall.height);
 	game->assets.space.img = mlx_xpm_file_to_image(
-		game->mlx, "assets/floor.xpm",
-		&game->assets.space.width, &game->assets.space.height);
+			game->mlx, "assets/floor.xpm",
+			&game->assets.space.width, &game->assets.space.height);
 	game->assets.exit.img = mlx_xpm_file_to_image(
-		game->mlx, "assets/exit.xpm",
-		&game->assets.exit.width, &game->assets.exit.height);
+			game->mlx, "assets/exit.xpm",
+			&game->assets.exit.width, &game->assets.exit.height);
 	if (!game->assets.wall.img)
 		return (ft_putendl_fd("Failed to load asset: wall", 2), -1);
 	if (!game->assets.exit.img)
@@ -59,20 +59,20 @@ int		game_load_assets_static(t_game *game)
 	return (0);
 }
 
-int		game_load_assets_obj(t_game *game)
+int	game_load_assets_obj(t_game *game)
 {
 	game->assets.collect_1.img = mlx_xpm_file_to_image(
-		game->mlx, "assets/coin_1.xpm",
-		&game->assets.collect_1.width, &game->assets.collect_1.height);
+			game->mlx, "assets/coin_1.xpm",
+			&game->assets.collect_1.width, &game->assets.collect_1.height);
 	game->assets.collect_2.img = mlx_xpm_file_to_image(
-		game->mlx, "assets/coin_2.xpm",
-		&game->assets.collect_2.width, &game->assets.collect_2.height);
+			game->mlx, "assets/coin_2.xpm",
+			&game->assets.collect_2.width, &game->assets.collect_2.height);
 	game->assets.player.img = mlx_xpm_file_to_image(
-		game->mlx, "assets/player.xpm",
-		&game->assets.player.width, &game->assets.player.height);
+			game->mlx, "assets/player.xpm",
+			&game->assets.player.width, &game->assets.player.height);
 	game->assets.enemy.img = mlx_xpm_file_to_image(
-		game->mlx, "assets/enemy.xpm",
-		&game->assets.enemy.width, &game->assets.enemy.height);
+			game->mlx, "assets/enemy.xpm",
+			&game->assets.enemy.width, &game->assets.enemy.height);
 	if (!game->assets.collect_1.img)
 		return (ft_putendl_fd("Failed to load asset: collect 1", 2), -1);
 	if (!game->assets.collect_2.img)
@@ -84,7 +84,7 @@ int		game_load_assets_obj(t_game *game)
 	return (0);
 }
 
-int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info)
+int	game_load_data(t_game *game, t_map *map_info, t_unit *unit_info)
 {
 	game->map = map_info->map_str_arr;
 	game->map_width = map_info->x;
@@ -98,7 +98,7 @@ int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info)
 	return (0);
 }
 
-int		start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info)
+int	start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info)
 {
 	init_game(game);
 	game_load_data(game, map_info, unit_info);

@@ -6,16 +6,16 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:29:40 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/07 11:48:09 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/10 13:36:57 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static char *move_count_str(int move_count)
+static char	*move_count_str(int move_count)
 {
-	char *str;
-	char *move_str;
+	char	*str;
+	char	*move_str;
 
 	move_str = ft_itoa(move_count);
 	str = ft_strjoin("Moves: ", move_str);
@@ -23,12 +23,12 @@ static char *move_count_str(int move_count)
 	return (str);
 }
 
-void game_print_move(t_game *game)
+void	game_print_move(t_game *game)
 {
 	char	*moves;
 
 	moves = move_count_str(game->move_count);
-    mlx_string_put(game->mlx, game->win, (game->map_width - 2)*TILE_SIZE,
-        (game->map_height)*TILE_SIZE - 10, 0xFFFFFF, moves);
+	mlx_string_put(game->mlx, game->win, (game->map_width - 2) * TILE_SIZE,
+		(game->map_height) * TILE_SIZE - 10, 0xFFFFFF, moves);
 	free(moves);
 }
