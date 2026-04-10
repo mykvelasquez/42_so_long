@@ -1,6 +1,6 @@
 *This project has been created as part of the 42 curriculum by mvelasqu.*
 
-## Description
+# Description
 
 ### Project Overview
 This project creates a 2D game using C and libraries such as Math and MiniLibX.  
@@ -70,7 +70,7 @@ Each map was created for differet edge cases, detailed table as seen below:
     - Player can reach the exit
 - `invalid_map_extra_newline.ber` may pass in weak parsers but should be treated as invalid
 
-## Instructions
+# Instructions
 
 ### Requirements
 
@@ -124,9 +124,9 @@ To simplify testing you can copy paste the commands listed below:
 | A valid smallest map executable | `./so_long maps/valid_map_small.ber` |
 | A valid map | `./so_long maps/valid_map.ber` |
 
-## Resources
+# Resources
 
 - AI tools were used to better understand MiniLibX and related functions
 - Assets inspiration from itch.io
 - MiniLibX repository: https://github.com/42paris/minilibx-linux
-- X11 events reference: https://tronche.com/gui/x/xlib/eve
+- X11 events reference: https://tronche.com/gui/x/xlib/events/
