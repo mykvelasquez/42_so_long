@@ -12,6 +12,21 @@
 
 #include "so_long.h"
 
+int	game_load_assets_check(char *file)
+{
+	int fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_putendl_fd("Error: cannot open xpm:", 2);
+		ft_putendl_fd(file, 2);
+		return (-1);
+	}
+	close (fd);
+	return (0);
+}
+
 void	game_cleanup(t_game *game)
 {
 	if (game->assets.player.img)

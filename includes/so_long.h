@@ -106,6 +106,7 @@ int		map_validate_path(t_map *map_info, t_unit *unit_info);
 int		map_dup(t_map *map_info);
 int		start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info);
 void	init_game(t_game *game);
+int		game_load_assets_check(char *file);
 int		game_load_assets_static(t_game *game);
 int		game_load_assets_obj(t_game *game);
 int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info);
