@@ -41,6 +41,9 @@ void	init_game(t_game *game)
 
 int	game_load_assets_static(t_game *game)
 {
+	if (game_load_assets_check("assets/wall.xpm") == -1 || game_load_assets_check("assets/floor.xpm") == -1
+			|| game_load_assets_check("assets/exit.xpm") == -1)
+			return (-1);
 	game->assets.wall.img = mlx_xpm_file_to_image(
 			game->mlx, "assets/wall.xpm",
 			&game->assets.wall.width, &game->assets.wall.height);
@@ -61,6 +64,9 @@ int	game_load_assets_static(t_game *game)
 
 int	game_load_assets_obj(t_game *game)
 {
+	if (game_load_assets_check("assets/coin_1.xpm") == -1 || game_load_assets_check("assets/coin_2.xpm") == -1
+		|| game_load_assets_check("assets/player.xpm") == -1 || game_load_assets_check("assets/enemy.xpm") == -1)
+		return (-1);
 	game->assets.collect_1.img = mlx_xpm_file_to_image(
 			game->mlx, "assets/coin_1.xpm",
 			&game->assets.collect_1.width, &game->assets.collect_1.height);
@@ -97,6 +103,7 @@ int	game_load_data(t_game *game, t_map *map_info, t_unit *unit_info)
 	game->collect_count = unit_info->collect_count;
 	return (0);
 }
+
 
 int	start_game_so_long(t_game *game, t_map *map_info, t_unit *unit_info)
 {
