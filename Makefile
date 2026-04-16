@@ -6,7 +6,7 @@
 #    By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/18 12:29:50 by mvelasqu          #+#    #+#              #
-#    Updated: 2026/04/16 09:38:40 by mvelasqu         ###   ########.fr        #
+#    Updated: 2026/04/16 10:27:35 by mvelasqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRCS_BONUS	= main.c \
 				src/game_enemy.c \
 				src/game_handle_move_key_bonus.c \
 				src/game_helper.c \
+				src/game_load_assets.c \
 				src/game_init.c \
 				src/game_key_handle.c \
 				src/game_print_move.c \
