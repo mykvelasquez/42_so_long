@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:32:05 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/10 13:36:26 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/16 09:37:24 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void	init_game(t_game *game);
 int		game_load_assets_check(char *file);
 int		game_load_assets_static(t_game *game);
 int		game_load_assets_obj(t_game *game);
+int		game_load_assets_collect(t_game *game);
 int		game_load_data(t_game *game, t_map *map_info, t_unit *unit_info);
 void	game_cleanup(t_game *game);
 int		game_print_key(int key, void *p);
