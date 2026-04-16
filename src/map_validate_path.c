@@ -6,7 +6,7 @@
 /*   By: mvelasqu <mvelasqu@student.42singapore.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 12:01:37 by mvelasqu          #+#    #+#             */
-/*   Updated: 2026/04/16 09:53:30 by mvelasqu         ###   ########.fr       */
+/*   Updated: 2026/04/16 10:05:59 by mvelasqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ int	map_validate_path(t_map *map_info, t_unit *unit_info)
 		return (ft_putendl_fd("Error: Exit inaccessible.", 2), -1);
 	if (map_has_char(m_dup, unit_info->collectible))
 		return (ft_putendl_fd("Error: Collectible inaccessible.", 2), -1);
-	if (map_has_char(m_dup, unit_info->enemy))
-		return (ft_putendl_fd("Error: Enemy inaccessible.", 2), -1);
 	if (map_has_char(m_dup, unit_info->space))
 		return (ft_putendl_fd("Error: Space inaccessible.", 2), -1);
 	return (0);
